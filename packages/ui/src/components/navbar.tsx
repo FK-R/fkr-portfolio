@@ -24,28 +24,28 @@ export function Navbar() {
       icon: (
         <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/web-projects",
     },
         {
       title: "Embedded Projects",
       icon: (
         <CircuitBoard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/embedded-projects",
     },
     {
       title: "Experiences",
       icon: (
         <CircleStar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/experiences",
     },
     {
       title: "Education",
       icon: (
         <GraduationCap className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/education",
     },
 
     {
@@ -60,7 +60,7 @@ export function Navbar() {
       icon: (
         <ZoomIn className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/more",
     },
   ];
   return (

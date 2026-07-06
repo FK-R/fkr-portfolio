@@ -1,213 +1,194 @@
+import React from 'react';
 import { 
-  Cpu, 
-  Layers, 
-  Terminal, 
-  Database, 
-  Globe, 
-  Smartphone, 
-  Mail,
-  Calendar,
-  FileText
+  Cpu, Layers, Terminal, Database, Globe, Smartphone, Mail, Calendar, FileText 
 } from 'lucide-react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import Link from 'next/link';
+import { FaGithub } from 'react-icons/fa';
+import { IoLogoLinkedin } from "react-icons/io5";
+import AceternityCard from '@workspace/ui/components/AceternityCard'; // Ensure this path matches your file structure
 
-// Furnished Card component supporting dark/light variants natively
-const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`
-    rounded-2xl border p-6 backdrop-blur-md transition-all duration-500
-    bg-white/70 border-slate-200/80 text-slate-900 shadow-sm
-    dark:bg-slate-950/40 dark:border-slate-800/80 dark:text-slate-100
-    hover:border-[#ADFA1D]/50 hover:shadow-[0_8px_30px_rgba(173,250,29,0.08)]
-    dark:hover:border-[#ADFA1D]/40 dark:hover:shadow-[0_0_30px_rgba(173,250,29,0.12)]
-    ${className}
-  `}>
-    {children}
-  </div>
-);
+// Static Metadata Engine for native SEO optimization
+export const metadata = {
+  title: "Md. Fakwer Uddin | Embedded Systems & Full-Stack Engineer",
+  description: "Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and high-performance modular web layouts.",
+};
 
 export default function PortfolioHome() {
   return (
-    <main className="min-h-screen relative overflow-hidden transition-colors duration-500 bg-slate-50 text-black dark:bg-black dark:text-slate-100 selection:bg-[#ADFA1D]/30 selection:text-[#5c850e] dark:selection:bg-[#ADFA1D]/30 dark:selection:text-[#ADFA1D]">
+    <main className="min-h-screen relative overflow-hidden bg-gray-50 text-black dark:bg-[#000000] dark:text-gray-100 selection:bg-[#ADFA1D]/30 selection:text-[#5c850e] dark:selection:bg-[#ADFA1D]/20 dark:selection:text-[#ADFA1D]">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       
-      {/* Dynamic Ambient Background Glow Elements */}
-      <div className="absolute top-0 left-1/4 -z-10 h-[500px] w-[500px] rounded-full blur-[140px] transition-colors duration-700 bg-[#ADFA1D]/10 dark:bg-[#ADFA1D]/[0.04]" />
-      <div className="absolute top-1/4 right-1/4 -z-10 h-[500px] w-[500px] rounded-full blur-[140px] transition-colors duration-700 bg-cyan-500/5 dark:bg-cyan-500/[0.02]" />
+      {/* Cinematic Soft Background Blobs */}
+      <div className="absolute top-[-10%] left-1/2 -trangray-x-1/2 -z-10 h-[600px] w-[1000px] rounded-full blur-[140px] opacity-60 bg-gradient-to-tr from-[#ADFA1D]/10 via-cyan-500/[0.05] to-transparent dark:from-[#ADFA1D]/[0.02] dark:via-cyan-500/[0.02]" />
 
-      <div className="mx-auto max-w-5xl px-6 py-16 md:py-24 relative z-10">
+      <div className="mx-auto max-w-5xl px-6 py-24 md:py-36 relative z-10">
         
-        {/* --- HEADER & UTILITY BAR --- */}
-        <header className="mb-16 space-y-6">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-bold tracking-widest uppercase text-[#6a9911] dark:text-[#ADFA1D] bg-[#ADFA1D]/20 dark:bg-[#ADFA1D]/10 border border-[#ADFA1D]/30 dark:border-[#ADFA1D]/20 px-3 py-1 rounded-full shadow-sm">
-              [ Embedded Systems & Full-Stack Engineer ]
-            </p>
+        {/* --- HEADER INFRASTRUCTURE --- */}
+        <header className="mb-24 space-y-8">
+          <div>
+            <span className="relative inline-flex overflow-hidden rounded-full p-[1px] focus:outline-none">
+              {/* Spinning Accent Border Loop */}
+              <span className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg,#E2E8F0_0%,#E2E8F0_25%,#ADFA1D_50%,#E2E8F0_75%,#E2E8F0_100%)] dark:bg-[conic-gradient(from_90deg,#0F172A_0%,#0F172A_25%,#ADFA1D_50%,#0F172A_75%,#0F172A_100%)]" />
+              <div className="inline-flex h-full w-full cursor-default items-center justify-center rounded-full bg-white px-3.5 py-1 text-xs font-semibold tracking-wide text-gray-800 backdrop-blur-3xl dark:bg-gray-950 dark:text-[#ADFA1D]">
+                ⚡ Embedded Systems & Full-Stack Engineer
+              </div>
+            </span>
           </div>
 
-          <div className="space-y-4">
-            <h1 className="text-4xl font-black tracking-tight sm:text-6xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-slate-50 dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
+          <div className="space-y-6">
+            {/* Clear, bold, readable linear text mask hierarchy */}
+            <h1 className="text-5xl font-black tracking-tight sm:text-7xl bg-gradient-to-b from-gray-950 via-gray-800 to-gray-700 dark:from-white dark:via-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
               Md. Fakwer Uddin
             </h1>
-            <p className="max-w-xl text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-              Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and modular web systems.
+            <p className="max-w-2xl text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-normal">
+              Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and high-performance, modular web layouts.
             </p>
           </div>
 
-          {/* Furnished Action Layout */}
-          <div className="flex flex-wrap items-center gap-4 pt-4">
-            {/* Primary Button updated to use the neon accent elegantly */}
-            <button className="group inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-slate-900 text-white font-medium text-sm px-5 shadow-md hover:bg-slate-800 hover:text-[#ADFA1D] dark:bg-[#ADFA1D] dark:text-slate-950 dark:hover:bg-[#bcfc47] transition-all">
-              <Calendar className="h-4 w-4 transition-transform group-hover:scale-110" />
+          {/* Action Call Routing Area */}
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            {/* High fidelity Aceternity style Shimmer Accent Action Button */}
+            <button className="inline-flex h-11 animate-shimmer items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-gray-800/80 bg-[linear-gradient(110deg,#fff,45%,#f1f5f9,55%,#fff)] dark:bg-[linear-gradient(110deg,#030712,45%,#1A2E05,55%,#030712)] bg-[size:200%_100%] px-5 font-semibold text-sm text-gray-900 dark:text-[#ADFA1D] transition-colors shadow-sm shadow-gray-200 dark:shadow-none focus:outline-none">
+              <Calendar className="h-4 w-4" />
               Schedule a call
             </button>
             
-            <button className="group inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium text-sm px-5 shadow-sm hover:border-[#ADFA1D]/40 hover:bg-[#ADFA1D]/5 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:border-[#ADFA1D]/30 transition-all">
-              <FileText className="h-4 w-4 text-slate-400 group-hover:text-[#6a9911] dark:group-hover:text-[#ADFA1D] transition-colors" />
+            <button className="group inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white/60 text-gray-700 font-medium text-sm px-5 backdrop-blur-sm hover:bg-gray-50 hover:text-black dark:border-gray-800 dark:bg-gray-950/20 dark:text-gray-300 dark:hover:bg-gray-900/60 dark:hover:text-white transition-all">
+              <FileText className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-[#ADFA1D] transition-colors" />
               Resume
             </button>
 
-            <div className="hidden sm:block h-6 w-px bg-slate-200 dark:bg-slate-800 mx-1" />
+            <div className="hidden sm:block h-6 w-px bg-gray-200 dark:bg-gray-800/60 mx-2" />
 
-            {/* Micro-interactive Connect Matrix */}
             <div className="flex items-center gap-1">
-              <a 
-                href="mailto:fakwer.uddin@nlytes.com" 
-                className="p-2.5 rounded-xl border border-transparent text-slate-500 hover:text-[#6a9911] hover:bg-[#ADFA1D]/10 dark:text-slate-400 dark:hover:text-[#ADFA1D] dark:hover:border-slate-800 dark:hover:bg-slate-900/40 transition-all"
-                aria-label="Email Address"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="p-2.5 rounded-xl border border-transparent text-slate-500 hover:text-[#6a9911] hover:bg-[#ADFA1D]/10 dark:text-slate-400 dark:hover:text-[#ADFA1D] dark:hover:border-slate-800 dark:hover:bg-slate-900/40 transition-all"
-                aria-label="GitHub Repository"
-              >
-                <FaGithub className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="p-2.5 rounded-xl border border-transparent text-slate-500 hover:text-[#6a9911] hover:bg-[#ADFA1D]/10 dark:text-slate-400 dark:hover:text-[#ADFA1D] dark:hover:border-slate-800 dark:hover:bg-slate-900/40 transition-all"
-                aria-label="LinkedIn Network"
-              >
-                <FaLinkedin className="h-5 w-5" />
-              </a>
+              {[
+                { href: "mailto:fakwer.uddin@nlytes.com", label: "Email Address Link", icon: <Mail className="h-5 w-5" /> },
+                { href: "https://github.com", label: "GitHub Profile Portfolio", icon: <FaGithub className="h-5 w-5" /> },
+                { href: "https://linkedin.com", label: "LinkedIn Professional Profile", icon: <IoLogoLinkedin className="h-5 w-5" /> }
+              ].map((link, i) => (
+                <Link 
+                  key={i}
+                  href={link.href} 
+                  className="p-2.5 rounded-xl border border-transparent text-gray-500 hover:text-black hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-[#ADFA1D] dark:hover:border-gray-900 dark:hover:bg-gray-950 transition-all"
+                  aria-label={link.label}
+                >
+                  {link.icon}
+                </Link>
+              ))}
             </div>
           </div>
         </header>
 
-        {/* --- SKILLS BENTO GRID --- */}
+        {/* --- SKILLS BENTO ARCHITECTURE --- */}
         <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           
-          {/* Card 1: Hardware & Embedded Core (Now using the new accent color) */}
-          <Card className="sm:col-span-2 border-slate-200 dark:border-[#ADFA1D]/20">
+          {/* Card 1: Hardware & Embedded Core */}
+          <AceternityCard className="sm:col-span-2 dark:border-[#ddd]/10">
             <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <h3 className="font-bold text-lg tracking-tight">Hardware & Embedded Systems</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Microcontrollers, low-level architecture & sensor integration</p>
+              <div className="space-y-1.5">
+                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Hardware & Embedded Systems</h2>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Microcontrollers, firmware design & peripheral interfaces</p>
               </div>
-              <span className="p-2 rounded-xl bg-[#ADFA1D]/20 text-[#6a9911] dark:bg-[#ADFA1D]/10 dark:text-[#ADFA1D]"><Cpu className="h-5 w-5" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-[#ADFA1D]/10 dark:text-[#ADFA1D]"><Cpu className="h-4 w-4" /></span>
             </div>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {["Arduino (UNO, Nano, Micro, Mini)", "ESP32", "ESP8266", "Microcontrollers", "STM32", "FreeRTOS", "I2C/SPI/UART", "Firmware (C/C++)"].map((tech) => (
-                <span key={tech} className="rounded-lg bg-[#ADFA1D]/10 dark:bg-[#ADFA1D]/5 border border-[#ADFA1D]/30 dark:border-[#ADFA1D]/20 px-3 py-1 text-xs font-semibold text-[#5c850e] dark:text-[#ADFA1D] transition-colors hover:bg-[#ADFA1D]/20">
+            <div className="mt-8 flex flex-wrap gap-1.5">
+              {["Arduino Architecture", "ESP32 / ESP8266", "Microcontrollers", "STM32 Ecosystem", "FreeRTOS", "I2C / SPI / UART", "Firmware (C/C++)"].map((tech) => (
+                <span key={tech} className="rounded-lg bg-gray-100 dark:bg-[#ADFA1D]/[0.02] border border-gray-200/80 dark:border-[#ADFA1D]/10 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-[#ADFA1D]/80">
                   {tech}
                 </span>
               ))}
             </div>
-          </Card>
+          </AceternityCard>
 
           {/* Card 2: Frontend */}
-          <Card>
+          <AceternityCard>
             <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <h3 className="font-bold text-lg tracking-tight">Frontend</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">User systems & reactive layers</p>
+              <div className="space-y-1.5">
+                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Frontend Core</h2>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Reactive layouts & complex interfaces</p>
               </div>
-              <span className="p-2 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400"><Globe className="h-5 w-5" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-cyan-500/10 dark:text-cyan-400"><Globe className="h-4 w-4" /></span>
             </div>
-            <div className="mt-6 flex flex-wrap gap-1.5">
-              {["React", "Next.js", "TailwindCSS", "Zustand", "Tanstack Query", "TypeScript"].map((tech) => (
-                <span key={tech} className="rounded-md bg-slate-100 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 px-2.5 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">
+            <div className="mt-8 flex flex-wrap gap-1.5">
+              {["React", "Next.js", "TailwindCSS", "Zustand", "TypeScript"].map((tech) => (
+                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
                   {tech}
                 </span>
               ))}
             </div>
-          </Card>
+          </AceternityCard>
 
           {/* Card 3: Backend */}
-          <Card>
+          <AceternityCard>
             <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <h3 className="font-bold text-lg tracking-tight">Backend</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">APIs, runtimes & logical layout</p>
+              <div className="space-y-1.5">
+                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Backend & Runtimes</h2>
+                <p className="text-xs text-gray-500 dark:text-gray-400">APIs, distributed architectures & services</p>
               </div>
-              <span className="p-2 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400"><Terminal className="h-5 w-5" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-purple-500/10 dark:text-purple-400"><Terminal className="h-4 w-4" /></span>
             </div>
-            <div className="mt-6 flex flex-wrap gap-1.5">
-              {["Node.js", "Express.js", "Hono.js", "Fastapi", "Go", "Prisma ORM"].map((tech) => (
-                <span key={tech} className="rounded-md bg-slate-100 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 px-2.5 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">
+            <div className="mt-8 flex flex-wrap gap-1.5">
+              {["Node.js", "Express.js", "Hono.js", "FastAPI", "Go", "Prisma ORM"].map((tech) => (
+                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
                   {tech}
                 </span>
               ))}
             </div>
-          </Card>
+          </AceternityCard>
 
           {/* Card 4: Database Logic */}
-          <Card>
+          <AceternityCard>
             <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <h3 className="font-bold text-lg tracking-tight">Databases</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Relational & transactional storage</p>
+              <div className="space-y-1.5">
+                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Data Infrastructure</h2>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Relational databases & high performance caches</p>
               </div>
-              <span className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400"><Database className="h-5 w-5" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-amber-500/10 dark:text-amber-400"><Database className="h-4 w-4" /></span>
             </div>
-            <div className="mt-6 flex flex-wrap gap-1.5">
-              {["MongoDB", "MySQL", "PostgreSQL", "SQLite", "Redis"].map((tech) => (
-                <span key={tech} className="rounded-md bg-slate-100 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 px-2.5 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">
+            <div className="mt-8 flex flex-wrap gap-1.5">
+              {["PostgreSQL", "MongoDB", "MySQL", "SQLite", "Redis"].map((tech) => (
+                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
                   {tech}
                 </span>
               ))}
             </div>
-          </Card>
+          </AceternityCard>
 
           {/* Card 5: Cloud Engineering */}
-          <Card>
+          <AceternityCard>
             <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <h3 className="font-bold text-lg tracking-tight">Cloud & Deploy</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Edge hosting & scalable runtimes</p>
+              <div className="space-y-1.5">
+                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Cloud & Devops</h2>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Optimized deployment & modern runtime environments</p>
               </div>
-              <span className="p-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400"><Layers className="h-5 w-5" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-blue-500/10 dark:text-blue-400"><Layers className="h-4 w-4" /></span>
             </div>
-            <div className="mt-6 flex flex-wrap gap-1.5">
-              {["Vercel", "Google Cloud", "AWS", "Netlify", "Docker"].map((tech) => (
-                <span key={tech} className="rounded-md bg-slate-100 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 px-2.5 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">
+            <div className="mt-8 flex flex-wrap gap-1.5">
+              {["Vercel", "AWS", "Google Cloud", "Docker"].map((tech) => (
+                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
                   {tech}
                 </span>
               ))}
             </div>
-          </Card>
+          </AceternityCard>
 
           {/* Card 6: Mobile Core & Tools */}
-          <Card className="sm:col-span-2 lg:col-span-1">
+          <AceternityCard className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <h3 className="font-bold text-lg tracking-tight">Mobile & Tools</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Native clients & systems sync</p>
+              <div className="space-y-1.5">
+                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Mobile & Frameworks</h2>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Cross-platform integration & configuration control</p>
               </div>
-              <span className="p-2 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400"><Smartphone className="h-5 w-5" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-orange-500/10 dark:text-orange-400"><Smartphone className="h-4 w-4" /></span>
             </div>
-            <div className="mt-6 flex flex-wrap gap-1.5">
-              {["React Native", "Expo", "Git", "GitHub/GitLab", "Figma"].map((tech) => (
-                <span key={tech} className="rounded-md bg-slate-100 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 px-2.5 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">
+            <div className="mt-8 flex flex-wrap gap-1.5">
+              {["React Native", "Expo", "Git Frameworks", "Figma"].map((tech) => (
+                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
                   {tech}
                 </span>
               ))}
             </div>
-          </Card>
+          </AceternityCard>
 
         </section>
       </div>

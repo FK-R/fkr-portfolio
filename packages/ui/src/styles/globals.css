@@ -7,6 +7,22 @@
 @source "../../../components/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
 
+/* --- TAILWIND V4 CUSTOM CONFIGURATION --- */
+@theme {
+  /* Register the shimmer animation loop */
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  /* Define the keyframe mechanics */
+  @keyframes shimmer {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
 @theme inline {
     --font-heading: var(--font-sans);
     --color-sidebar-ring: var(--sidebar-ring);

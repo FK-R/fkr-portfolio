@@ -20,25 +20,25 @@ export function Navbar() {
     },
 
     {
-      title: "Web Projects",
+      title: "Web Project",
       icon: (
         <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "/web-projects",
+      href: "/web-project",
     },
         {
-      title: "Embedded Projects",
+      title: "Embedded Project",
       icon: (
         <CircuitBoard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "/embedded-projects",
+      href: "/embedded-project",
     },
     {
-      title: "Experiences",
+      title: "Experience",
       icon: (
         <CircleStar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "/experiences",
+      href: "/experience",
     },
     {
       title: "Education",
@@ -49,11 +49,11 @@ export function Navbar() {
     },
 
     {
-      title: "Publications",
+      title: "Publication",
       icon: (
         <BookOpenCheck className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "/publications",
+      href: "/publication",
     },
     {
       title: "More",

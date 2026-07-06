@@ -5,6 +5,8 @@ import { Moon, Sun } from "lucide-react"
 import { flushSync } from "react-dom"
 
 import { cn } from "@workspace/ui/lib/utils"
+import { MdWbSunny } from "react-icons/md"
+import { PiMoonFill } from "react-icons/pi"
 
 export type TransitionVariant =
   | "circle"
@@ -248,7 +250,9 @@ export const AnimatedThemeToggler = ({
       className={cn(className)}
       {...props}
     >
-      {isDark ? <Sun /> : <Moon />}
+      {isDark ? <MdWbSunny className="size-6" />
+: <PiMoonFill className="size-6" />
+}
       <span className="sr-only">Toggle theme</span>
     </button>
   )

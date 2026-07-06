@@ -5,11 +5,6 @@ import { Trophy, Users, Mic, Code, Mail, Github } from "lucide-react"
 import { LinkedinIcon } from "lucide-react"
 import Link from "next/link"
 
-export const metadata: Metadata = {
-  title: "More | Md. Fakwer Uddin",
-  description: "Additional information, certifications, and community involvement",
-}
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {

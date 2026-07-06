@@ -1,4 +1,3 @@
-import React from 'react';
 import { 
   Cpu, Layers, Terminal, Database, Globe, Smartphone, Mail, Calendar, FileText 
 } from 'lucide-react';

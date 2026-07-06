@@ -1,18 +1,18 @@
-import React from "react";
-import { Briefcase, Calendar, MapPin, Cpu } from "lucide-react";
+"use client"
 
-// Types for strict TypeScript safety
+import { motion } from "framer-motion"
+import { Briefcase, Calendar, MapPin, Cpu } from "lucide-react"
+
 interface ExperienceItem {
-  id: string;
-  role: string;
-  company: string;
-  location: string;
-  period: string;
-  responsibilities: string[];
-  isStrategic?: boolean;
+  id: string
+  role: string
+  company: string
+  location: string
+  period: string
+  responsibilities: string[]
+  isStrategic?: boolean
 }
 
-// Data extracted directly from your professional profile and synced chronologically
 const experiences: ExperienceItem[] = [
   {
     id: "robotics-trainer",
@@ -86,107 +86,132 @@ const experiences: ExperienceItem[] = [
       "Technical Mentorship: Empowered Rohingya-affected residents in Teknaf by providing hands-on training in solar-light assembly and maintenance, fostering local self-reliance.",
     ],
   },
-];
+]
 
-const ExperiencePage = () => {
+export default function ExperiencePage() {
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-16 animate-fade-in transition-colors duration-300">
-      {/* Section Header */}
-      <div className="flex items-center gap-3.5 mb-14 border-b border-zinc-200 dark:border-zinc-800 pb-5">
-        <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200">
-          <Briefcase className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
-        </div>
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Professional Experience
-          </h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
-            Engineering hardware logic and full-stack web architectures.
-          </p>
-        </div>
-      </div>
-
-      {/* Timeline Wrapper */}
-      <div className="relative border-l-2 border-zinc-200 dark:border-zinc-800 ml-4 md:ml-8 space-y-12 after:absolute after:bottom-0 after:left-[-2px] after:h-16 after:w-[2px] after:bg-gradient-to-b after:from-zinc-200 after:to-transparent dark:after:from-zinc-800">
-        {experiences.map((exp) => {
-          const isCurrent = exp.period.includes("Present");
-
-          return (
-            <div key={exp.id} className="relative pl-8 md:pl-12 group animate-slide-up">
-              {/* Interactive Timeline Node */}
-              <div 
-                className={`absolute -left-[11px] top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 
-                  bg-white dark:bg-zinc-950 transition-all duration-300 ease-in-out shadow-sm
-                  ${isCurrent 
-                    ? "border-emerald-500 dark:border-emerald-400 scale-110 ring-4 ring-emerald-500/10 dark:ring-emerald-400/10" 
-                    : "border-zinc-300 dark:border-zinc-700 group-hover:border-emerald-500 dark:group-hover:border-emerald-400 group-hover:scale-110"
-                  }`}
-              >
-                {isCurrent && (
-                  <span className="absolute h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
-                )}
-              </div>
-
-              {/* Card Meta Container */}
-              <div className="flex flex-col space-y-3">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-200">
-                    {exp.role}
-                  </h3>
-                  
-                  <div className="flex items-center text-xs font-semibold tracking-wide uppercase text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800 px-3 py-1 rounded-md w-fit shadow-2xs">
-                    <Calendar className="mr-1.5 h-3.5 w-3.5 text-zinc-400" />
-                    {exp.period}
-                  </div>
-                </div>
-
-                {/* Sub-header detailing Company & Location */}
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium">
-                  <span className="font-semibold text-zinc-800 dark:text-zinc-200">
-                    {exp.company}
-                  </span>
-                  <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700">|</span>
-                  <span className="flex items-center text-zinc-500 dark:text-zinc-400">
-                    <MapPin className="mr-1 h-3.5 w-3.5 opacity-70" />
-                    {exp.location}
-                  </span>
-                </div>
-
-                {/* Main Accomplishments List */}
-                <ul className="mt-2 space-y-3 text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed list-none pl-0">
-                  {exp.responsibilities.map((bullet, index) => {
-                    const isStrategicNote = bullet.startsWith("Strategic Note:");
-                    
-                    if (isStrategicNote) {
-                      return (
-                        <li 
-                          key={index} 
-                          className="mt-4 p-3 rounded-lg border border-emerald-500/20 bg-emerald-50/30 dark:bg-emerald-950/10 text-zinc-700 dark:text-zinc-300 flex items-start gap-2.5 shadow-2xs"
-                        >
-                          <Cpu className="h-4 w-4 mt-0.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                          <span className="text-xs font-medium">
-                            <strong className="text-emerald-700 dark:text-emerald-400">Strategic Pivot:</strong>{" "}
-                            {bullet.replace("Strategic Note:", "").trim()}
-                          </span>
-                        </li>
-                      );
-                    }
-
-                    return (
-                      <li key={index} className="relative pl-5 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-150 group/item">
-                        <span className="absolute left-0 top-[7px] h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 group-hover/item:bg-emerald-500 dark:group-hover/item:bg-emerald-400 transition-colors duration-150" />
-                        {bullet}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      {/* Hero Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32 border-b border-[var(--border)]">
+        <motion.div
+          className="mx-auto max-w-5xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 rounded-lg bg-[#ADFA1D]/10">
+              <Briefcase className="h-6 w-6 text-[#ADFA1D]" />
             </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Professional Experience
+            </h1>
+          </div>
+          <p className="max-w-2xl text-lg text-[var(--muted-foreground)]">
+            Engineering hardware logic and full-stack web architectures across diverse organizations.
+          </p>
+        </motion.div>
+      </section>
 
-export default ExperiencePage;
+      {/* Timeline Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <div className="mx-auto max-w-5xl">
+          <div className="relative space-y-8">
+            {/* Vertical Line */}
+            <div className="absolute left-4 top-0 h-full w-0.5 bg-gradient-to-b from-[#ADFA1D]/30 to-transparent md:left-8" />
+
+            {/* Timeline Items */}
+            <div className="space-y-12">
+              {experiences.map((exp, index) => {
+                const isCurrent = exp.period.includes("Present")
+
+                return (
+                  <motion.div
+                    key={exp.id}
+                    custom={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="relative pl-12 md:pl-20"
+                  >
+                    {/* Animated Dot */}
+                    <motion.div
+                      className={`absolute left-0 top-2 md:left-0 h-8 w-8 rounded-full border-2 ${
+                        isCurrent
+                          ? "border-[#ADFA1D] bg-[#ADFA1D]/10 shadow-[0_0_20px_rgba(173,250,29,0.3)]"
+                          : "border-[var(--border)] bg-[var(--card)]"
+                      } flex items-center justify-center transition-all`}
+                      whileHover={{ scale: 1.2 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {isCurrent && (
+                        <motion.span
+                          className="h-2.5 w-2.5 rounded-full bg-[#ADFA1D]"
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        />
+                      )}
+                    </motion.div>
+
+                    {/* Content Card */}
+                    <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[#ADFA1D]/30 transition-all duration-300">
+                      {/* Header */}
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                        <div>
+                          <h3 className="text-xl font-bold">{exp.role}</h3>
+                          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
+                            <span className="font-medium text-[var(--foreground)]">{exp.company}</span>
+                            <span className="hidden sm:inline text-[var(--border)]">|</span>
+                            <span className="flex items-center text-sm text-[var(--muted-foreground)]">
+                              <MapPin className="mr-1 h-4 w-4" />
+                              {exp.location}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 text-sm font-semibold text-[#ADFA1D] bg-[#ADFA1D]/10 px-3 py-1 rounded-lg w-fit whitespace-nowrap">
+                          <Calendar className="h-4 w-4" />
+                          {exp.period}
+                        </div>
+                      </div>
+
+                      {/* Responsibilities */}
+                      <ul className="space-y-3 text-[var(--muted-foreground)] text-sm">
+                        {exp.responsibilities.map((bullet, i) => {
+                          const isStrategicNote = bullet.startsWith("Strategic Note:")
+
+                          if (isStrategicNote) {
+                            return (
+                              <li
+                                key={i}
+                                className="mt-4 p-3 rounded-lg border border-[#ADFA1D]/20 bg-[#ADFA1D]/5 text-[var(--foreground)] flex items-start gap-2.5"
+                              >
+                                <Cpu className="h-4 w-4 mt-0.5 text-[#ADFA1D] flex-shrink-0" />
+                                <span className="text-xs font-medium">
+                                  <strong className="text-[#ADFA1D]">Strategic Pivot:</strong>{" "}
+                                  {bullet.replace("Strategic Note:", "").trim()}
+                                </span>
+                              </li>
+                            )
+                          }
+
+                          return (
+                            <li key={i} className="relative pl-5 hover:text-[var(--foreground)] transition-colors">
+                              <span className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-[#ADFA1D]/50" />
+                              {bullet}
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}

@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@workspace/ui"],
+  optimizeFonts: true,
+  compress: true,
+  poweredByHeader: false,
+  productionBrowserSourceMaps: false,
+  images: {
+    formats: ["image/webp", "image/avif"],
+    minimumCacheTTL: 31536000,
+  },
 }
 
 export default nextConfig

@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-in-up: slide-in-up 0.6s ease-out;
+  --animate-pulse-glow: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes shimmer {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  /* Light Mode Colors */
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #f9fafb;
+  --card-foreground: #111827;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  --accent: #adfa1d;
+  --accent-foreground: #1a1a1a;
+  --muted: #6b7280;
+  --muted-foreground: #9ca3af;
+  --primary-button: #000000;
+  --primary-button-hover: #1f2937;
+  --secondary-button: #f3f4f6;
+  --secondary-button-hover: #e5e7eb;
+}
+
+.dark {
+  /* Dark Mode Colors */
+  --background: #000000;
+  --foreground: #e5e7eb;
+  --card: #0a0a0a;
+  --card-foreground: #f3f4f6;
+  --border: #262626;
+  --border-light: #1f2937;
+  --accent: #adfa1d;
+  --accent-foreground: #000000;
+  --muted: #9ca3af;
+  --muted-foreground: #6b7280;
+  --primary-button: #ffffff;
+  --primary-button-hover: #e5e7eb;
+  --secondary-button: #1f2937;
+  --secondary-button-hover: #374151;
+}
+
+@layer base {
+  * {
+    @apply border-[var(--border)] outline-offset-2;
+  }
+
+  html {
+    @apply bg-[var(--background)] text-[var(--foreground)] antialiased scroll-smooth;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)];
+  }
+
+  button {
+    @apply transition-colors duration-200 ease-out;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg font-medium bg-[var(--primary-button)] text-[var(--accent-foreground)] hover:bg-[var(--primary-button-hover)] transition-colors;
+  }
+
+  .btn-primary-neon {
+    @apply px-4 py-2 rounded-lg font-medium border border-[var(--accent)] text-[var(--accent)] bg-transparent hover:bg-[var(--accent)]/10 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg font-medium bg-[var(--secondary-button)] text-[var(--foreground)] hover:bg-[var(--secondary-button-hover)] transition-colors dark:text-[var(--card-foreground)];
+  }
+
+  /* Card Component */
+  .card {
+    @apply rounded-xl border border-[var(--border)] bg-[var(--card)] text-[var(--card-foreground)] p-6 shadow-sm transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-[var(--accent)]/30 shadow-lg;
+  }
+
+  /* Section Styles */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold tracking-tight mb-12;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-[var(--muted)] mb-8;
+  }
+
+  /* Navigation Styles */
+  .nav-link {
+    @apply relative px-4 py-2 text-sm font-medium transition-colors hover:text-[var(--accent)];
+  }
+
+  .nav-link.active {
+    @apply text-[var(--accent)];
+  }
+
+  .nav-link::after {
+    @apply absolute bottom-0 left-4 right-4 h-0.5 bg-[var(--accent)] opacity-0 transition-opacity;
+  }
+
+  .nav-link.active::after,
+  .nav-link:hover::after {
+    @apply opacity-100;
+  }
+
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30;
+  }
+
+  .badge-secondary {
+    @apply bg-[var(--secondary-button)] text-[var(--foreground)] dark:bg-[var(--border-light)] dark:text-[var(--card-foreground)];
+  }
+}
+
+/* Smooth View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Selection Styles */
+::selection {
+  @apply bg-[var(--accent)]/30 text-[var(--foreground)];
+}
+
+.dark ::selection {
+  @apply bg-[var(--accent)]/20 text-[var(--accent)];
+}

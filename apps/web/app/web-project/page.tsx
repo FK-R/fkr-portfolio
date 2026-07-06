@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from "framer-motion"
 import {
   Globe,
   Code2,
@@ -5,7 +8,7 @@ import {
   Database,
   ExternalLink,
   CheckCircle2,
-} from "lucide-react";
+} from "lucide-react"
 
 interface WebProject {
   id: string;
@@ -189,117 +192,137 @@ const webProjects: WebProject[] = [
   },
 ];
 
-export default async function WebProjectsPage() {
+export default function WebProjectsPage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  }
+
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="mb-14 border-b border-zinc-200 dark:border-zinc-800 pb-6">
-        <div className="flex items-center gap-3 mb-3">
-          <Globe className="h-7 w-7 text-blue-600 dark:text-blue-400" />
-
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Web Applications & Digital Platforms
-          </h2>
-        </div>
-
-        <p className="max-w-3xl text-zinc-500 dark:text-zinc-400">
-          Enterprise websites, business portals, e-commerce solutions,
-          logistics platforms, and organizational systems developed using
-          modern web technologies and scalable architectures.
-        </p>
-      </div>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      {/* Hero Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32 border-b border-[var(--border)]">
+        <motion.div
+          className="mx-auto max-w-5xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 rounded-lg bg-[#ADFA1D]/10">
+              <Globe className="h-6 w-6 text-[#ADFA1D]" />
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Web Projects
+            </h1>
+          </div>
+          <p className="max-w-2xl text-lg text-[var(--muted-foreground)]">
+            Enterprise websites, e-commerce platforms, and logistics solutions built with modern web technologies and scalable architectures.
+          </p>
+        </motion.div>
+      </section>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {webProjects.map((project) => (
-          <article
-            key={project.id}
-            className="group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6 transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-800 hover:shadow-lg"
-          >
-            {/* Top Glow Line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-            {/* Header */}
-            <div className="flex justify-between items-center mb-4">
-              <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400">
-                {project.category}
-              </span>
-
-              <span className="text-xs font-medium text-blue-600 dark:text-blue-400">
-                ● {project.status}
-              </span>
-            </div>
-
-            {/* Title */}
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {project.title}
-            </h3>
-
-            {/* Description */}
-            <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 mb-5">
-              {project.description}
-            </p>
-
-            {/* Features */}
-            <div className="space-y-2 mb-6">
-              {project.features.map((feature) => (
-                <div
-                  key={feature}
-                  className="flex items-start gap-2 text-sm"
-                >
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-blue-500 shrink-0" />
-                  <span className="text-zinc-700 dark:text-zinc-300">
-                    {feature}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <motion.div
+          className="mx-auto max-w-7xl"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {webProjects.map((project) => (
+              <motion.article
+                key={project.id}
+                variants={itemVariants}
+                className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[#ADFA1D]/30 hover:shadow-lg transition-all duration-300"
+              >
+                {/* Header */}
+                <div className="flex justify-between items-start mb-4">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#ADFA1D]/10 text-[#ADFA1D]">
+                    {project.category}
                   </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Technologies */}
-            <div className="border-t border-zinc-100 dark:border-zinc-800 pt-4">
-              <div className="flex items-center gap-2 mb-3">
-                <Code2 className="h-4 w-4 text-zinc-400" />
-                <span className="text-xs uppercase tracking-wider font-semibold text-zinc-500">
-                  Technologies
-                </span>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mb-5">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2.5 py-1 rounded-md text-xs font-medium bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Footer */}
-              <div className="flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800 pt-4">
-                <div className="flex items-center gap-2 text-zinc-500">
-                  <Server className="h-4 w-4" />
-                  <Database className="h-4 w-4" />
-
-                  <span className="text-xs">
-                    Production Deployment
+                  <span className="text-xs font-medium text-[#ADFA1D]">
+                    ● {project.status}
                   </span>
                 </div>
 
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400"
-                >
-                  Visit Site
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
+                {/* Title & Description */}
+                <h3 className="text-xl font-bold mb-3 group-hover:text-[#ADFA1D] transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-5">
+                  {project.description}
+                </p>
+
+                {/* Features */}
+                <div className="space-y-2 mb-6">
+                  {project.features.map((feature) => (
+                    <div key={feature} className="flex items-start gap-2 text-sm">
+                      <CheckCircle2 className="h-4 w-4 mt-0.5 text-[#ADFA1D] flex-shrink-0" />
+                      <span className="text-[var(--muted-foreground)]">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Technologies & Footer */}
+                <div className="border-t border-[var(--border)] pt-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Code2 className="h-4 w-4 text-[var(--muted-foreground)]" />
+                    <span className="text-xs uppercase tracking-wider font-semibold text-[var(--muted-foreground)]">
+                      Technologies
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 rounded-md text-xs font-medium bg-[var(--secondary-button)] border border-[var(--border)]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between border-t border-[var(--border)] pt-4">
+                    <div className="flex items-center gap-2 text-[var(--muted-foreground)] text-xs">
+                      <Server className="h-4 w-4" />
+                      <Database className="h-4 w-4" />
+                      <span>Production Deployment</span>
+                    </div>
+
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm font-medium text-[#ADFA1D] hover:opacity-80 transition-opacity"
+                    >
+                      Visit Site
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+    </div>
+  )
 }

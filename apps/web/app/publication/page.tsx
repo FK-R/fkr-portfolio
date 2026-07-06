@@ -1,14 +1,14 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { 
   BookOpen, 
   Calendar, 
   MapPin, 
-  ExternalLink, 
-  ArrowLeft,
-  Sun,
-  Moon,
+  ExternalLink,
   FileText,
   Award
-} from 'lucide-react';
+} from 'lucide-react'
 
 interface Publication {
   title: string;
@@ -60,79 +60,82 @@ const publicationsData: Publication[] = [
 ];
 
 export default function PublicationsPage() {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  }
 
   return (
-    <main className="min-h-screen relative overflow-hidden transition-colors duration-500 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 selection:bg-emerald-500/20 selection:text-emerald-600 dark:selection:bg-emerald-500/30 dark:selection:text-emerald-400">
-      
-      {/* Background Micro Glows */}
-      <div className="absolute top-0 right-1/4 -z-10 h-[400px] w-[400px] rounded-full blur-[140px] bg-emerald-500/5 dark:bg-emerald-500/[0.02]" />
-      <div className="absolute bottom-1/4 left-1/4 -z-10 h-[400px] w-[400px] rounded-full blur-[140px] bg-cyan-500/5 dark:bg-cyan-500/[0.02]" />
-
-      <div className="mx-auto max-w-4xl px-6 py-12 md:py-20 relative z-10">
-        
-        {/* --- TOP UTILITY CONTROLS --- */}
-        <div className="flex items-center justify-between mb-12">
-          <a 
-            href="/" 
-            className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors group"
-          >
-            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to Overview
-          </a>
-          
-        </div>
-
-        {/* --- PAGE HEADER --- */}
-        <header className="mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">
-            <BookOpen className="h-3.5 w-3.5" />
-            Research Repository
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      {/* Hero Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32 border-b border-[var(--border)]">
+        <motion.div
+          className="mx-auto max-w-5xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 rounded-lg bg-[#ADFA1D]/10">
+              <BookOpen className="h-6 w-6 text-[#ADFA1D]" />
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Publications
+            </h1>
           </div>
-          <h1 className="text-3xl font-black tracking-tight sm:text-5xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-slate-50 dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
-            IEEE Publications
-          </h1>
-          <p className="max-w-xl text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-            Peer-reviewed conference proceedings focusing on industrial automation, intelligent transportation frameworks, and IoT edge hardware design systems.
+          <p className="max-w-2xl text-lg text-[var(--muted-foreground)]">
+            Peer-reviewed conference proceedings focusing on industrial automation, IoT infrastructure, and embedded hardware design systems.
           </p>
-        </header>
+        </motion.div>
+      </section>
 
-        {/* --- PUBLICATIONS LIST ENGINE --- */}
-        <div className="space-y-6">
+      {/* Publications Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <div className="mx-auto max-w-4xl space-y-6">
           {publicationsData.map((pub, index) => (
-            <div 
+            <motion.article
               key={index}
-              className="group relative rounded-2xl border p-6 backdrop-blur-md transition-all duration-300
-                bg-white/70 border-slate-200/80 shadow-sm
-                dark:bg-slate-950/40 dark:border-slate-900 dark:hover:border-slate-800/80
-                hover:border-emerald-500/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.02)]"
+              custom={index}
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[#ADFA1D]/30 hover:shadow-lg transition-all duration-300"
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                 <div className="space-y-3 flex-1">
-                  
-                  {/* Tags Row */}
+                  {/* Tags */}
                   <div className="flex flex-wrap items-center gap-2">
                     {pub.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-600 dark:bg-slate-900 dark:text-slate-400 border border-slate-200/50 dark:border-slate-800">
+                      <span
+                        key={tag}
+                        className="text-xs font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-[#ADFA1D]/10 text-[#ADFA1D] border border-[#ADFA1D]/20"
+                      >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Paper Title */}
-                  <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-200 leading-snug">
-                    <a href={pub.ieeeUrl} target="_blank" rel="noopener noreferrer">
+                  {/* Title */}
+                  <h2 className="text-lg font-bold group-hover:text-[#ADFA1D] transition-colors">
+                    <a href={pub.ieeeUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
                       {pub.title}
                     </a>
                   </h2>
 
-                  {/* Conference Citation Info */}
-                  <div className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                    <Award className="h-4 w-4 mt-0.5 text-slate-400 shrink-0" />
-                    <p className="leading-normal font-medium">{pub.conference}</p>
+                  {/* Conference */}
+                  <div className="flex items-start gap-2 text-sm text-[var(--muted-foreground)]">
+                    <Award className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                    <p className="font-medium">{pub.conference}</p>
                   </div>
 
-                  {/* Logistics Metadata */}
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-500 dark:text-slate-500 pt-1">
+                  {/* Metadata */}
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[var(--muted-foreground)] pt-1">
                     <span className="flex items-center gap-1">
                       <Calendar className="h-3.5 w-3.5" />
                       {pub.date}
@@ -141,40 +144,30 @@ export default function PublicationsPage() {
                       <MapPin className="h-3.5 w-3.5" />
                       {pub.location}
                     </span>
-                    <span className="font-mono text-[11px] bg-slate-100 dark:bg-slate-900/60 px-1.5 py-0.5 rounded border border-transparent dark:border-slate-800/40">
+                    <span className="font-mono text-xs bg-[var(--secondary-button)] px-2 py-0.5 rounded border border-[var(--border)]">
                       DOI: {pub.doi}
                     </span>
                   </div>
-
                 </div>
 
-                {/* IEEE Action Link Button */}
+                {/* IEEE Link */}
                 <div className="pt-2 md:pt-0 shrink-0">
-                  <a 
+                  <a
                     href={pub.ieeeUrl}
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-9 items-center justify-center gap-2 rounded-xl text-xs font-semibold px-4 border shadow-sm transition-all
-                      bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-emerald-600
-                      dark:bg-slate-900 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-emerald-400"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold border border-[#ADFA1D] text-[#ADFA1D] hover:bg-[#ADFA1D]/10 transition-colors"
                   >
-                    <FileText className="h-3.5 w-3.5" />
+                    <FileText className="h-4 w-4" />
                     IEEE Xplore
-                    <ExternalLink className="h-3 w-3 opacity-60" />
+                    <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </div>
-
               </div>
-            </div>
+            </motion.article>
           ))}
         </div>
-
-        {/* --- SYSTEM FOOTER --- */}
-        <footer className="mt-20 border-t border-slate-200/60 dark:border-slate-900 pt-8 text-center text-xs text-slate-400 dark:text-slate-600">
-          <p>© {new Date().getFullYear()} Md. Fakwer Uddin. Documented via Digital Object Identifiers.</p>
-        </footer>
-
-      </div>
-    </main>
-  );
+      </section>
+    </div>
+  )
 }

@@ -1,197 +1,225 @@
-import React from 'react';
-import { 
-  Cpu, Layers, Terminal, Database, Globe, Smartphone, Mail, Calendar, FileText 
-} from 'lucide-react';
-import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa';
-import { IoLogoLinkedin } from "react-icons/io5";
-import AceternityCard from '@workspace/ui/components/AceternityCard'; // Ensure this path matches your file structure
+"use client"
 
-// Static Metadata Engine for native SEO optimization
-export const metadata = {
-  title: "Md. Fakwer Uddin | Embedded Systems & Full-Stack Engineer",
-  description: "Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and high-performance modular web layouts.",
-};
+import { Mail, Calendar, FileText, ExternalLink } from 'lucide-react'
+import Link from 'next/link'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { skillsData } from '@/data/skills'
+import { motion } from 'framer-motion'
 
-export default function PortfolioHome() {
+const socialLinks = [
+  {
+    href: "mailto:fakwer.uddin@nlytes.com",
+    icon: Mail,
+    label: "Email",
+  },
+  {
+    href: "https://github.com",
+    icon: FileText,
+    label: "GitHub",
+  },
+  {
+    href: "https://linkedin.com",
+    icon: ExternalLink,
+    label: "LinkedIn",
+  },
+]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+}
+
+export default function Home() {
   return (
-    <main className="min-h-screen relative overflow-hidden bg-gray-50 text-black dark:bg-[#000000] dark:text-gray-100 selection:bg-[#ADFA1D]/30 selection:text-[#5c850e] dark:selection:bg-[#ADFA1D]/20 dark:selection:text-[#ADFA1D]">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-      
-      {/* Cinematic Soft Background Blobs */}
-      <div className="absolute top-[-10%] left-1/2 -trangray-x-1/2 -z-10 h-[600px] w-[1000px] rounded-full blur-[140px] opacity-60 bg-gradient-to-tr from-[#ADFA1D]/10 via-cyan-500/[0.05] to-transparent dark:from-[#ADFA1D]/[0.02] dark:via-cyan-500/[0.02]" />
-
-      <div className="mx-auto max-w-5xl px-6 py-24 md:py-36 relative z-10">
-        
-        {/* --- HEADER INFRASTRUCTURE --- */}
-        <header className="mb-24 space-y-8">
-          <div>
-            <span className="relative inline-flex overflow-hidden rounded-full p-[1px] focus:outline-none">
-              {/* Spinning Accent Border Loop */}
-              <span className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg,#E2E8F0_0%,#E2E8F0_25%,#ADFA1D_50%,#E2E8F0_75%,#E2E8F0_100%)] dark:bg-[conic-gradient(from_90deg,#0F172A_0%,#0F172A_25%,#ADFA1D_50%,#0F172A_75%,#0F172A_100%)]" />
-              <div className="inline-flex h-full w-full cursor-default items-center justify-center rounded-full bg-white px-3.5 py-1 text-xs font-semibold tracking-wide text-gray-800 backdrop-blur-3xl dark:bg-gray-950 dark:text-[#ADFA1D]">
-                ⚡ Embedded Systems & Full-Stack Engineer
-              </div>
-            </span>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      {/* Hero Section */}
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 md:py-32 overflow-hidden">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 -z-10 h-full w-full">
+          <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+            <div
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ADFA1D]/20 to-transparent opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+              style={{
+                clipPath:
+                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+              }}
+            />
           </div>
+        </div>
 
-          <div className="space-y-6">
-            {/* Clear, bold, readable linear text mask hierarchy */}
-            <h1 className="text-5xl font-black tracking-tight sm:text-7xl bg-gradient-to-b from-gray-950 via-gray-800 to-gray-700 dark:from-white dark:via-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
+        <motion.div
+          className="mx-auto max-w-5xl"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Badge */}
+          <motion.div variants={itemVariants} className="mb-8">
+            <Badge variant="accent" className="animate-pulse">
+              ⚡ Embedded Systems & Full-Stack Engineer
+            </Badge>
+          </motion.div>
+
+          {/* Main Heading */}
+          <motion.div variants={itemVariants} className="mb-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance">
               Md. Fakwer Uddin
             </h1>
-            <p className="max-w-2xl text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-normal">
-              Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and high-performance, modular web layouts.
-            </p>
-          </div>
+          </motion.div>
 
-          {/* Action Call Routing Area */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            {/* High fidelity Aceternity style Shimmer Accent Action Button */}
-            <button className="inline-flex h-11 animate-shimmer items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-gray-800/80 bg-[linear-gradient(110deg,#fff,45%,#f1f5f9,55%,#fff)] dark:bg-[linear-gradient(110deg,#030712,45%,#1A2E05,55%,#030712)] bg-[size:200%_100%] px-5 font-semibold text-sm text-gray-900 dark:text-[#ADFA1D] transition-colors shadow-sm shadow-gray-200 dark:shadow-none focus:outline-none">
-              <Calendar className="h-4 w-4" />
-              Schedule a call
-            </button>
-            
-            <button className="group inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white/60 text-gray-700 font-medium text-sm px-5 backdrop-blur-sm hover:bg-gray-50 hover:text-black dark:border-gray-800 dark:bg-gray-950/20 dark:text-gray-300 dark:hover:bg-gray-900/60 dark:hover:text-white transition-all">
-              <FileText className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-[#ADFA1D] transition-colors" />
+          {/* Subtitle */}
+          <motion.p
+            variants={itemVariants}
+            className="max-w-2xl text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed mb-8"
+          >
+            Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and high-performance, modular web layouts.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mb-12">
+            <Link href="mailto:fakwer.uddin@nlytes.com">
+              <Button variant="primary" size="lg" className="gap-2">
+                <Calendar className="h-4 w-4" />
+                Get in Touch
+              </Button>
+            </Link>
+            <Button variant="outline" size="lg" className="gap-2">
+              <FileText className="h-4 w-4" />
               Resume
-            </button>
+            </Button>
+          </motion.div>
 
-            <div className="hidden sm:block h-6 w-px bg-gray-200 dark:bg-gray-800/60 mx-2" />
+          {/* Social Links */}
+          <motion.div variants={itemVariants} className="flex gap-3">
+            {socialLinks.map(({ href, icon: Icon, label }) => (
+              <Link
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[#ADFA1D] hover:border-[#ADFA1D]/50 transition-colors"
+              >
+                <Icon className="h-5 w-5" />
+              </Link>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
 
-            <div className="flex items-center gap-1">
-              {[
-                { href: "mailto:fakwer.uddin@nlytes.com", label: "Email Address Link", icon: <Mail className="h-5 w-5" /> },
-                { href: "https://github.com", label: "GitHub Profile Portfolio", icon: <FaGithub className="h-5 w-5" /> },
-                { href: "https://linkedin.com", label: "LinkedIn Professional Profile", icon: <IoLogoLinkedin className="h-5 w-5" /> }
-              ].map((link, i) => (
-                <Link 
-                  key={i}
-                  href={link.href} 
-                  className="p-2.5 rounded-xl border border-transparent text-gray-500 hover:text-black hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-[#ADFA1D] dark:hover:border-gray-900 dark:hover:bg-gray-950 transition-all"
-                  aria-label={link.label}
+      {/* Skills Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32 border-t border-[var(--border)]">
+        <motion.div
+          className="mx-auto max-w-5xl"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Technical Expertise
+          </motion.h2>
+
+          <motion.div
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {skillsData.map((skill, index) => {
+              const Icon = skill.icon
+              return (
+                <motion.div
+                  key={skill.title}
+                  variants={itemVariants}
+                  className={skill.span}
                 >
-                  {link.icon}
-                </Link>
-              ))}
-            </div>
+                  <Card interactive className="h-full flex flex-col">
+                    <div className="flex items-start justify-between mb-6">
+                      <div>
+                        <h3 className="font-bold text-lg tracking-tight mb-1">
+                          {skill.title}
+                        </h3>
+                        <p className="text-sm text-[var(--muted-foreground)]">
+                          {skill.description}
+                        </p>
+                      </div>
+                      <div className="p-2 rounded-lg bg-[#ADFA1D]/10 text-[#ADFA1D] flex-shrink-0">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {skill.technologies.map(tech => (
+                        <Badge key={tech} variant="secondary" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </Card>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32 border-t border-[var(--border)]">
+        <motion.div
+          className="mx-auto max-w-2xl text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            Let&apos;s Build Something Amazing
+          </h2>
+          <p className="text-lg text-[var(--muted-foreground)] mb-8">
+            Whether you have a project in mind or just want to chat, I&apos;m always excited to explore new opportunities.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="mailto:fakwer.uddin@nlytes.com">
+              <Button variant="primary" size="lg">
+                Get in Touch
+              </Button>
+            </Link>
+            <Link href="/experience">
+              <Button variant="outline" size="lg">
+                View My Work
+              </Button>
+            </Link>
           </div>
-        </header>
-
-        {/* --- SKILLS BENTO ARCHITECTURE --- */}
-        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          
-          {/* Card 1: Hardware & Embedded Core */}
-          <AceternityCard className="sm:col-span-2 dark:border-[#ddd]/10">
-            <div className="flex items-start justify-between">
-              <div className="space-y-1.5">
-                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Hardware & Embedded Systems</h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Microcontrollers, firmware design & peripheral interfaces</p>
-              </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-[#ADFA1D]/10 dark:text-[#ADFA1D]"><Cpu className="h-4 w-4" /></span>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-1.5">
-              {["Arduino Architecture", "ESP32 / ESP8266", "Microcontrollers", "STM32 Ecosystem", "FreeRTOS", "I2C / SPI / UART", "Firmware (C/C++)"].map((tech) => (
-                <span key={tech} className="rounded-lg bg-gray-100 dark:bg-[#ADFA1D]/[0.02] border border-gray-200/80 dark:border-[#ADFA1D]/10 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-[#ADFA1D]/80">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </AceternityCard>
-
-          {/* Card 2: Frontend */}
-          <AceternityCard>
-            <div className="flex items-start justify-between">
-              <div className="space-y-1.5">
-                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Frontend Core</h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Reactive layouts & complex interfaces</p>
-              </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-cyan-500/10 dark:text-cyan-400"><Globe className="h-4 w-4" /></span>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-1.5">
-              {["React", "Next.js", "TailwindCSS", "Zustand", "TypeScript"].map((tech) => (
-                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </AceternityCard>
-
-          {/* Card 3: Backend */}
-          <AceternityCard>
-            <div className="flex items-start justify-between">
-              <div className="space-y-1.5">
-                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Backend & Runtimes</h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400">APIs, distributed architectures & services</p>
-              </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-purple-500/10 dark:text-purple-400"><Terminal className="h-4 w-4" /></span>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-1.5">
-              {["Node.js", "Express.js", "Hono.js", "FastAPI", "Go", "Prisma ORM"].map((tech) => (
-                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </AceternityCard>
-
-          {/* Card 4: Database Logic */}
-          <AceternityCard>
-            <div className="flex items-start justify-between">
-              <div className="space-y-1.5">
-                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Data Infrastructure</h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Relational databases & high performance caches</p>
-              </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-amber-500/10 dark:text-amber-400"><Database className="h-4 w-4" /></span>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-1.5">
-              {["PostgreSQL", "MongoDB", "MySQL", "SQLite", "Redis"].map((tech) => (
-                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </AceternityCard>
-
-          {/* Card 5: Cloud Engineering */}
-          <AceternityCard>
-            <div className="flex items-start justify-between">
-              <div className="space-y-1.5">
-                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Cloud & Devops</h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Optimized deployment & modern runtime environments</p>
-              </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-blue-500/10 dark:text-blue-400"><Layers className="h-4 w-4" /></span>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-1.5">
-              {["Vercel", "AWS", "Google Cloud", "Docker"].map((tech) => (
-                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </AceternityCard>
-
-          {/* Card 6: Mobile Core & Tools */}
-          <AceternityCard className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-start justify-between">
-              <div className="space-y-1.5">
-                <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Mobile & Frameworks</h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Cross-platform integration & configuration control</p>
-              </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-orange-500/10 dark:text-orange-400"><Smartphone className="h-4 w-4" /></span>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-1.5">
-              {["React Native", "Expo", "Git Frameworks", "Figma"].map((tech) => (
-                <span key={tech} className="rounded-md bg-gray-100 dark:bg-gray-900/40 border border-gray-200/60 dark:border-gray-800/80 px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </AceternityCard>
-
-        </section>
-      </div>
-    </main>
-  );
+        </motion.div>
+      </section>
+    </div>
+  )
 }

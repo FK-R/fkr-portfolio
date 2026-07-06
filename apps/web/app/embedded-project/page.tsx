@@ -1,4 +1,7 @@
-import { Cpu, Layers, Radio, CheckCircle2 } from "lucide-react";
+"use client"
+
+import { motion } from "framer-motion"
+import { Cpu, Layers, Radio, CheckCircle2 } from "lucide-react"
 
 interface HardwareProject {
   id: string;
@@ -94,93 +97,122 @@ const embeddedProjects: HardwareProject[] = [
   },
 ];
 
-export default async function ProjectsPage() {
+export default function EmbeddedProjectsPage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  }
+
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="mb-12 border-b border-zinc-200 dark:border-zinc-800 pb-6">
-        <div className="flex items-center gap-3 mb-2">
-          <Cpu className="h-7 w-7 text-emerald-600" />
-          <h1 className="text-3xl md:text-4xl font-bold">
-            Hardware & Embedded Systems
-          </h1>
-        </div>
-
-        <p className="text-zinc-500 dark:text-zinc-400 max-w-3xl">
-          Production-grade IoT solutions, industrial automation systems,
-          embedded firmware architectures, and research-driven hardware
-          projects.
-        </p>
-      </div>
-
-      {/* Projects */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {embeddedProjects.map((project) => (
-          <article
-            key={project.id}
-            className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 hover:shadow-lg transition-all"
-          >
-            {/* Top Row */}
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900">
-                {project.category}
-              </span>
-
-              <span className="text-xs text-emerald-600 font-medium">
-                ● {project.liveStatus}
-              </span>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      {/* Hero Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32 border-b border-[var(--border)]">
+        <motion.div
+          className="mx-auto max-w-5xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 rounded-lg bg-[#ADFA1D]/10">
+              <Cpu className="h-6 w-6 text-[#ADFA1D]" />
             </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Embedded Projects
+            </h1>
+          </div>
+          <p className="max-w-2xl text-lg text-[var(--muted-foreground)]">
+            Production-grade IoT solutions, industrial automation systems, embedded firmware architectures, and research-driven hardware projects.
+          </p>
+        </motion.div>
+      </section>
 
-            {/* Title */}
-            <h2 className="text-xl font-bold mb-3">{project.title}</h2>
-
-            {/* Description */}
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-5">
-              {project.description}
-            </p>
-
-            {/* Features */}
-            <div className="space-y-2 mb-6">
-              {project.keyFeatures.map((feature) => (
-                <div
-                  key={feature}
-                  className="flex gap-2 items-start text-sm"
-                >
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-600 shrink-0" />
-                  <span>{feature}</span>
+      {/* Projects Grid */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <motion.div
+          className="mx-auto max-w-7xl"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {embeddedProjects.map((project) => (
+              <motion.article
+                key={project.id}
+                variants={itemVariants}
+                className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[#ADFA1D]/30 hover:shadow-lg transition-all duration-300"
+              >
+                {/* Header */}
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#ADFA1D]/10 text-[#ADFA1D]">
+                    {project.category}
+                  </span>
+                  <span className="text-xs text-[#ADFA1D] font-medium">
+                    ● {project.liveStatus}
+                  </span>
                 </div>
-              ))}
-            </div>
 
-            {/* Footer */}
-            <div className="border-t border-zinc-200 dark:border-zinc-800 pt-4 space-y-3">
-              <div className="flex flex-wrap gap-2 items-center">
-                <Layers className="h-4 w-4 text-zinc-400" />
-                {project.hardwareStack.map((item) => (
-                  <span
-                    key={item}
-                    className="px-2 py-1 text-xs rounded bg-zinc-100 dark:bg-zinc-900"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+                {/* Title */}
+                <h2 className="text-xl font-bold mb-3">{project.title}</h2>
 
-              <div className="flex flex-wrap gap-2 items-center">
-                <Radio className="h-4 w-4 text-zinc-400" />
-                {project.protocols.map((protocol) => (
-                  <span
-                    key={protocol}
-                    className="text-xs font-medium text-emerald-600"
-                  >
-                    {protocol}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
+                {/* Description */}
+                <p className="text-sm text-[var(--muted-foreground)] mb-5 leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Features */}
+                <div className="space-y-2 mb-6">
+                  {project.keyFeatures.map((feature) => (
+                    <div key={feature} className="flex gap-2 items-start text-sm">
+                      <CheckCircle2 className="h-4 w-4 mt-0.5 text-[#ADFA1D] flex-shrink-0" />
+                      <span className="text-[var(--muted-foreground)]">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div className="border-t border-[var(--border)] pt-4 space-y-3">
+                  <div className="flex flex-wrap gap-2 items-center">
+                    <Layers className="h-4 w-4 text-[var(--muted-foreground)]" />
+                    {project.hardwareStack.map((item) => (
+                      <span
+                        key={item}
+                        className="px-2 py-1 text-xs rounded bg-[var(--secondary-button)] border border-[var(--border)]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 items-center">
+                    <Radio className="h-4 w-4 text-[var(--muted-foreground)]" />
+                    {project.protocols.map((protocol) => (
+                      <span key={protocol} className="text-xs font-medium text-[#ADFA1D]">
+                        {protocol}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+    </div>
+  )
 }

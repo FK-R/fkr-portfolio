@@ -1,5 +1,9 @@
-import React from "react";
-import { Briefcase, Calendar, MapPin, Cpu } from "lucide-react";
+
+import { CpuChargeIcon } from "@hugeicons/core-free-icons";
+import { Navigation03Icon } from "@hugeicons/core-free-icons";
+import { Calendar03Icon } from "@hugeicons/core-free-icons";
+import { Briefcase08Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 // Types for strict TypeScript safety
 interface ExperienceItem {
@@ -94,7 +98,7 @@ const ExperiencePage = () => {
       {/* Section Header */}
       <div className="flex items-center gap-3.5 mb-14 border-b border-zinc-200 dark:border-zinc-800 pb-5">
         <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200">
-          <Briefcase className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+     <HugeiconsIcon icon={Briefcase08Icon} className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
         </div>
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -135,7 +139,7 @@ const ExperiencePage = () => {
                   </h3>
                   
                   <div className="flex items-center text-xs font-semibold tracking-wide uppercase text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800 px-3 py-1 rounded-md w-fit shadow-2xs">
-                    <Calendar className="mr-1.5 h-3.5 w-3.5 text-zinc-400" />
+             <HugeiconsIcon icon={Calendar03Icon}  className="mr-1.5 h-3.5 w-3.5 text-zinc-400" />
                     {exp.period}
                   </div>
                 </div>
@@ -147,7 +151,7 @@ const ExperiencePage = () => {
                   </span>
                   <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700">|</span>
                   <span className="flex items-center text-zinc-500 dark:text-zinc-400">
-                    <MapPin className="mr-1 h-3.5 w-3.5 opacity-70" />
+             <HugeiconsIcon icon={Navigation03Icon}  className="mr-1 h-3.5 w-3.5 opacity-70" />
                     {exp.location}
                   </span>
                 </div>
@@ -163,7 +167,7 @@ const ExperiencePage = () => {
                           key={index} 
                           className="mt-4 p-3 rounded-lg border border-emerald-500/20 bg-emerald-50/30 dark:bg-emerald-950/10 text-zinc-700 dark:text-zinc-300 flex items-start gap-2.5 shadow-2xs"
                         >
-                          <Cpu className="h-4 w-4 mt-0.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                      <HugeiconsIcon icon={CpuChargeIcon}  className="h-4 w-4 mt-0.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                           <span className="text-xs font-medium">
                             <strong className="text-emerald-700 dark:text-emerald-400">Strategic Pivot:</strong>{" "}
                             {bullet.replace("Strategic Note:", "").trim()}

@@ -1,19 +1,17 @@
-import React from 'react';
 import { 
-  Trophy, 
-  Users, 
-  Mic, 
-  BookOpen, 
-  Award, 
-  Briefcase,
-  Cpu,
-  Code,
-
-  Mail,
-  ExternalLink
-} from 'lucide-react';
-import { FiLinkedin } from 'react-icons/fi';
-import { FaGithub } from 'react-icons/fa';
+  Certificate01Icon, 
+  CpuIcon, 
+  ChampionIcon, 
+  BookOpen01Icon, 
+  Mic01Icon,
+  Github01Icon, 
+  Linkedin01Icon, 
+  Mail01Icon,
+  CodeIcon,
+  MentoringIcon
+} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import Link from "next/link";
 
 // Premium Structural Card Component
 const Card = ({ children, className = "", noPadding = false }: { children: React.ReactNode; className?: string, noPadding?: boolean }) => (
@@ -69,7 +67,7 @@ export default function MoreInfoPage() {
             <Card>
               <div className="flex items-center gap-3 mb-8 border-b border-slate-100 dark:border-white/5 pb-4">
                 <div className="p-2.5 rounded-xl bg-[#ADFA1D]/10 text-[#5c850e] dark:text-[#ADFA1D]">
-                  <Mic className="h-5 w-5" />
+                  <HugeiconsIcon icon={Mic01Icon} className="h-5 w-5" />
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight">Professional Engagements</h2>
               </div>
@@ -119,25 +117,26 @@ export default function MoreInfoPage() {
             <Card>
               <div className="flex items-center gap-3 mb-6 border-b border-slate-100 dark:border-white/5 pb-4">
                 <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                  <BookOpen className="h-5 w-5" />
+                  <HugeiconsIcon icon={BookOpen01Icon} className="h-5 w-5" />
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight">Courses & Workshops</h2>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {/* Hardware & Embedded Focus */}
                 {[
-                  { title: "PCB Design and Fabrication", type: "5-Day Workshop", issuer: "IEEE RAS IIUC SBC", icon: Cpu },
-                  { title: "Microcontroller & Robotics", type: "45-Hour Course", issuer: "Desikarigor Training Circle", icon: Cpu },
-                  { title: "Embedded Design Challenge", type: "Participation", issuer: "Embedded System & Robotics Group", icon: Cpu },
-                  { title: "Bluetooth & RF Controlled Robot", type: "Workshop", issuer: "Embedded System & Robotics Group", icon: Cpu },
-                  { title: "Full Stack Web Development (Node.js)", type: "40-Hour Course", issuer: "mPair Lab", icon: Code },
-                  { title: "Scientific Research Paper Writing", type: "Workshop", issuer: "IEEE, IIUC", icon: BookOpen },
-                  { title: "Inter-University Hackathon 2020", type: "24-Hour Event", issuer: "FSE, IIUC", icon: Code },
-                  { title: "Soccer Bot Challenge / Robot-Fight", type: "Participant", issuer: "IIUC Tech Fest", icon: Cpu },
+                  { title: "PCB Design and Fabrication", type: "5-Day Workshop", issuer: "IEEE RAS IIUC SBC", icon: CpuIcon },
+                  { title: "Microcontroller & Robotics", type: "45-Hour Course", issuer: "Desikarigor Training Circle", icon: CpuIcon },
+                  { title: "Embedded Design Challenge", type: "Participation", issuer: "Embedded System & Robotics Group", icon: CpuIcon },
+                  { title: "Bluetooth & RF Controlled Robot", type: "Workshop", issuer: "Embedded System & Robotics Group", icon: CpuIcon },
+                  { title: "Full Stack Web Development (Node.js)", type: "40-Hour Course", issuer: "mPair Lab", icon: CodeIcon },
+                  { title: "Scientific Research Paper Writing", type: "Workshop", issuer: "IEEE, IIUC", icon: BookOpen01Icon },
+                  { title: "Inter-University Hackathon 2020", type: "24-Hour Event", issuer: "FSE, IIUC", icon: CodeIcon },
+                  { title: "Soccer Bot Challenge / Robot-Fight", type: "Participant", issuer: "IIUC Tech Fest", icon: CpuIcon },
                 ].map((item, idx) => (
                   <div key={idx} className="flex gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-white/10 transition-colors">
-                    <div className="mt-1"><item.icon className="h-4 w-4 text-slate-400" /></div>
+                    <div className="mt-1">
+                      <HugeiconsIcon icon={item.icon} className="h-4 w-4 text-slate-400" />
+                    </div>
                     <div>
                       <h4 className="font-semibold text-sm text-slate-900 dark:text-slate-200 leading-tight mb-1">{item.title}</h4>
                       <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
@@ -159,7 +158,7 @@ export default function MoreInfoPage() {
             <Card>
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
-                  <Trophy className="h-5 w-5" />
+                  <HugeiconsIcon icon={ChampionIcon} className="h-5 w-5" />
                 </div>
                 <h2 className="text-xl font-bold tracking-tight">Key Achievements</h2>
               </div>
@@ -167,7 +166,7 @@ export default function MoreInfoPage() {
               <div className="flex flex-col gap-4">
                 <div className="p-5 rounded-2xl border border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/5 relative overflow-hidden group">
                   <div className="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
-                    <Award className="h-24 w-24 text-amber-500" />
+                    <HugeiconsIcon icon={Certificate01Icon} className="h-24 w-24 text-amber-500" />
                   </div>
                   <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-200/50 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 mb-3">
                     Champion
@@ -190,7 +189,7 @@ export default function MoreInfoPage() {
             <Card>
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
-                  <Users className="h-5 w-5" />
+                  <HugeiconsIcon icon={MentoringIcon} className="h-5 w-5" />
                 </div>
                 <h2 className="text-xl font-bold tracking-tight">Leadership & Volunteering</h2>
               </div>
@@ -223,15 +222,15 @@ export default function MoreInfoPage() {
                   <p className="text-sm text-slate-400 dark:text-slate-400 mt-1">Available for new opportunities.</p>
                 </div>
                 <div className="flex gap-2">
-                  <a href="#" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
-                    <FaGithub className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
-                    <FiLinkedin className="h-5 w-5" />
-                  </a>
-                  <a href="mailto:hello@example.com" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
-                    <Mail className="h-5 w-5" />
-                  </a>
+                  <Link href="#" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
+                    <HugeiconsIcon icon={Github01Icon} className="h-5 w-5" />
+                  </Link>
+                  <Link href="#" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
+                    <HugeiconsIcon icon={Linkedin01Icon} className="h-5 w-5" />
+                  </Link>
+                  <Link href="mailto:hello@example.com" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
+                    <HugeiconsIcon icon={Mail01Icon} className="h-5 w-5" />
+                  </Link>
                 </div>
               </div>
             </Card>

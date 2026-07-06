@@ -1,12 +1,10 @@
 "use client"
-
 import { useCallback, useEffect, useRef, useState } from "react"
-import { Moon, Sun } from "lucide-react"
 import { flushSync } from "react-dom"
-
-import { cn } from "@workspace/ui/lib/utils"
-import { MdWbSunny } from "react-icons/md"
-import { PiMoonFill } from "react-icons/pi"
+import { cn } from "@/lib/utils"
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Sun01Icon } from "@hugeicons/core-free-icons";
+import { Moon01Icon } from "@hugeicons/core-free-icons";
 
 export type TransitionVariant =
   | "circle"
@@ -250,8 +248,10 @@ export const AnimatedThemeToggler = ({
       className={cn(className)}
       {...props}
     >
-      {isDark ? <MdWbSunny className="size-6" />
-: <PiMoonFill className="size-6" />
+      {isDark ? 
+      <HugeiconsIcon icon={Sun01Icon} />
+      // <MdWbSunny className="size-6" />
+: <HugeiconsIcon icon={Moon01Icon} />
 }
       <span className="sr-only">Toggle theme</span>
     </button>

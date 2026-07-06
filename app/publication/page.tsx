@@ -1,14 +1,13 @@
-import { 
-  BookOpen, 
-  Calendar, 
-  MapPin, 
-  ExternalLink, 
-  ArrowLeft,
-  Sun,
-  Moon,
-  FileText,
-  Award
-} from 'lucide-react';
+
+
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft } from "@hugeicons/core-free-icons";
+import { BookOpen } from "@hugeicons/core-free-icons";
+import { LicenseDraftIcon } from "@hugeicons/core-free-icons";
+import { Calendar } from "@hugeicons/core-free-icons";
+import { MapsSquare01Icon } from "@hugeicons/core-free-icons";
+import { Search02Icon } from "@hugeicons/core-free-icons";
+import Link from "next/link";
 
 interface Publication {
   title: string;
@@ -72,20 +71,20 @@ export default function PublicationsPage() {
         
         {/* --- TOP UTILITY CONTROLS --- */}
         <div className="flex items-center justify-between mb-12">
-          <a 
+          <Link 
             href="/" 
             className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors group"
           >
-            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+            <HugeiconsIcon icon={ArrowLeft} className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to Overview
-          </a>
+          </Link>
           
         </div>
 
         {/* --- PAGE HEADER --- */}
         <header className="mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">
-            <BookOpen className="h-3.5 w-3.5" />
+            <HugeiconsIcon icon={BookOpen} className="h-3.5 w-3.5" />
             Research Repository
           </div>
           <h1 className="text-3xl font-black tracking-tight sm:text-5xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-slate-50 dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
@@ -120,25 +119,25 @@ export default function PublicationsPage() {
 
                   {/* Paper Title */}
                   <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-200 leading-snug">
-                    <a href={pub.ieeeUrl} target="_blank" rel="noopener noreferrer">
+                    <Link href={pub.ieeeUrl} target="_blank" rel="noopener noreferrer">
                       {pub.title}
-                    </a>
+                    </Link>
                   </h2>
 
                   {/* Conference Citation Info */}
                   <div className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                    <Award className="h-4 w-4 mt-0.5 text-slate-400 shrink-0" />
+                <HugeiconsIcon icon={LicenseDraftIcon}  className="h-4 w-4 mt-0.5 text-slate-400 shrink-0" />
                     <p className="leading-normal font-medium">{pub.conference}</p>
                   </div>
 
                   {/* Logistics Metadata */}
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-500 dark:text-slate-500 pt-1">
                     <span className="flex items-center gap-1">
-                      <Calendar className="h-3.5 w-3.5" />
+                      <HugeiconsIcon icon={Calendar} className="h-3.5 w-3.5" />
                       {pub.date}
                     </span>
                     <span className="flex items-center gap-1">
-                      <MapPin className="h-3.5 w-3.5" />
+               <HugeiconsIcon icon={MapsSquare01Icon}   className="h-3.5 w-3.5" />
                       {pub.location}
                     </span>
                     <span className="font-mono text-[11px] bg-slate-100 dark:bg-slate-900/60 px-1.5 py-0.5 rounded border border-transparent dark:border-slate-800/40">
@@ -150,7 +149,7 @@ export default function PublicationsPage() {
 
                 {/* IEEE Action Link Button */}
                 <div className="pt-2 md:pt-0 shrink-0">
-                  <a 
+                  <Link 
                     href={pub.ieeeUrl}
                     target="_blank" 
                     rel="noopener noreferrer"
@@ -158,10 +157,10 @@ export default function PublicationsPage() {
                       bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-emerald-600
                       dark:bg-slate-900 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-emerald-400"
                   >
-                    <FileText className="h-3.5 w-3.5" />
+ 
                     IEEE Xplore
-                    <ExternalLink className="h-3 w-3 opacity-60" />
-                  </a>
+              <HugeiconsIcon icon={Search02Icon}  className="h-3 w-3 opacity-60" />
+                  </Link>
                 </div>
 
               </div>

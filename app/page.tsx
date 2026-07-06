@@ -1,12 +1,21 @@
-import { 
-  Cpu, Layers, Terminal, Database, Globe, Smartphone, Mail, Calendar, FileText 
-} from 'lucide-react';
-import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa';
-import { IoLogoLinkedin } from "react-icons/io5";
-import AceternityCard from '@workspace/ui/components/AceternityCard'; // Ensure this path matches your file structure
 
-// Static Metadata Engine for native SEO optimization
+import Link from 'next/link';
+import { File02Icon } from "@hugeicons/core-free-icons";
+import { MailAtSign02Icon } from "@hugeicons/core-free-icons";
+import { Github01Icon } from "@hugeicons/core-free-icons";
+import { Linkedin01Icon } from "@hugeicons/core-free-icons";
+import { Calendar03Icon } from "@hugeicons/core-free-icons";
+import {CpuChargeIcon} from "@hugeicons/core-free-icons";
+
+import { ComputerTerminal01Icon } from "@hugeicons/core-free-icons";
+import { Database01Icon } from "@hugeicons/core-free-icons";
+import {LayerIcon} from "@hugeicons/core-free-icons";
+import {SmartPhone01Icon} from "@hugeicons/core-free-icons";
+
+
+import {Globe02Icon} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import AceternityCard from '@/components/ui/AceternityCard'; 
 export const metadata = {
   title: "Md. Fakwer Uddin | Embedded Systems & Full-Stack Engineer",
   description: "Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and high-performance modular web layouts.",
@@ -48,12 +57,12 @@ export default function PortfolioHome() {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             {/* High fidelity Aceternity style Shimmer Accent Action Button */}
             <button className="inline-flex h-11 animate-shimmer items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-gray-800/80 bg-[linear-gradient(110deg,#fff,45%,#f1f5f9,55%,#fff)] dark:bg-[linear-gradient(110deg,#030712,45%,#1A2E05,55%,#030712)] bg-[size:200%_100%] px-5 font-semibold text-sm text-gray-900 dark:text-[#ADFA1D] transition-colors shadow-sm shadow-gray-200 dark:shadow-none focus:outline-none">
-              <Calendar className="h-4 w-4" />
+        <HugeiconsIcon icon={Calendar03Icon}  className="h-4 w-4" />
               Schedule a call
             </button>
             
             <button className="group inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white/60 text-gray-700 font-medium text-sm px-5 backdrop-blur-sm hover:bg-gray-50 hover:text-black dark:border-gray-800 dark:bg-gray-950/20 dark:text-gray-300 dark:hover:bg-gray-900/60 dark:hover:text-white transition-all">
-              <FileText className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-[#ADFA1D] transition-colors" />
+              <HugeiconsIcon icon={File02Icon}  className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-[#ADFA1D] transition-colors" />
               Resume
             </button>
 
@@ -61,9 +70,9 @@ export default function PortfolioHome() {
 
             <div className="flex items-center gap-1">
               {[
-                { href: "mailto:fakwer.uddin@nlytes.com", label: "Email Address Link", icon: <Mail className="h-5 w-5" /> },
-                { href: "https://github.com", label: "GitHub Profile Portfolio", icon: <FaGithub className="h-5 w-5" /> },
-                { href: "https://linkedin.com", label: "LinkedIn Professional Profile", icon: <IoLogoLinkedin className="h-5 w-5" /> }
+                { href: "mailto:fakwer.uddin@nlytes.com", label: "Email Address Link", icon: <HugeiconsIcon icon={MailAtSign02Icon}  className="h-5 w-5" /> },
+                { href: "https://github.com", label: "GitHub Profile Portfolio", icon: <HugeiconsIcon icon={Github01Icon}  className="h-5 w-5" /> },
+                { href: "https://linkedin.com", label: "LinkedIn Professional Profile", icon: <HugeiconsIcon icon={Linkedin01Icon}  className="h-5 w-5" /> }
               ].map((link, i) => (
                 <Link 
                   key={i}
@@ -88,7 +97,7 @@ export default function PortfolioHome() {
                 <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Hardware & Embedded Systems</h2>
                 <p className="text-xs text-gray-500 dark:text-gray-400">Microcontrollers, firmware design & peripheral interfaces</p>
               </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-[#ADFA1D]/10 dark:text-[#ADFA1D]"><Cpu className="h-4 w-4" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-[#ADFA1D]/10 dark:text-[#ADFA1D]"> <HugeiconsIcon icon={CpuChargeIcon} className="h-4 w-4" /></span>
             </div>
             <div className="mt-8 flex flex-wrap gap-1.5">
               {["Arduino Architecture", "ESP32 / ESP8266", "Microcontrollers", "STM32 Ecosystem", "FreeRTOS", "I2C / SPI / UART", "Firmware (C/C++)"].map((tech) => (
@@ -106,7 +115,7 @@ export default function PortfolioHome() {
                 <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Frontend Core</h2>
                 <p className="text-xs text-gray-500 dark:text-gray-400">Reactive layouts & complex interfaces</p>
               </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-cyan-500/10 dark:text-cyan-400"><Globe className="h-4 w-4" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-cyan-500/10 dark:text-cyan-400"><HugeiconsIcon icon={Globe02Icon}  className="h-4 w-4" /></span>
             </div>
             <div className="mt-8 flex flex-wrap gap-1.5">
               {["React", "Next.js", "TailwindCSS", "Zustand", "TypeScript"].map((tech) => (
@@ -124,7 +133,7 @@ export default function PortfolioHome() {
                 <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Backend & Runtimes</h2>
                 <p className="text-xs text-gray-500 dark:text-gray-400">APIs, distributed architectures & services</p>
               </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-purple-500/10 dark:text-purple-400"><Terminal className="h-4 w-4" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-purple-500/10 dark:text-purple-400"><HugeiconsIcon icon={ComputerTerminal01Icon}  className="h-4 w-4" /></span>
             </div>
             <div className="mt-8 flex flex-wrap gap-1.5">
               {["Node.js", "Express.js", "Hono.js", "FastAPI", "Go", "Prisma ORM"].map((tech) => (
@@ -142,7 +151,7 @@ export default function PortfolioHome() {
                 <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Data Infrastructure</h2>
                 <p className="text-xs text-gray-500 dark:text-gray-400">Relational databases & high performance caches</p>
               </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-amber-500/10 dark:text-amber-400"><Database className="h-4 w-4" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-amber-500/10 dark:text-amber-400"><HugeiconsIcon icon={Database01Icon}  className="h-4 w-4" /></span>
             </div>
             <div className="mt-8 flex flex-wrap gap-1.5">
               {["PostgreSQL", "MongoDB", "MySQL", "SQLite", "Redis"].map((tech) => (
@@ -160,7 +169,7 @@ export default function PortfolioHome() {
                 <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Cloud & Devops</h2>
                 <p className="text-xs text-gray-500 dark:text-gray-400">Optimized deployment & modern runtime environments</p>
               </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-blue-500/10 dark:text-blue-400"><Layers className="h-4 w-4" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-blue-500/10 dark:text-blue-400"><HugeiconsIcon icon={LayerIcon}  className="h-4 w-4" /></span>
             </div>
             <div className="mt-8 flex flex-wrap gap-1.5">
               {["Vercel", "AWS", "Google Cloud", "Docker"].map((tech) => (
@@ -178,7 +187,7 @@ export default function PortfolioHome() {
                 <h2 className="font-bold text-lg tracking-tight text-gray-900 dark:text-gray-50">Mobile & Frameworks</h2>
                 <p className="text-xs text-gray-500 dark:text-gray-400">Cross-platform integration & configuration control</p>
               </div>
-              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-orange-500/10 dark:text-orange-400"><Smartphone className="h-4 w-4" /></span>
+              <span className="p-2 rounded-xl bg-gray-100 text-gray-700 dark:bg-orange-500/10 dark:text-orange-400"><HugeiconsIcon icon={SmartPhone01Icon}  className="h-4 w-4" /></span>
             </div>
             <div className="mt-8 flex flex-wrap gap-1.5">
               {["React Native", "Expo", "Git Frameworks", "Figma"].map((tech) => (

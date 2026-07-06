@@ -1,5 +1,10 @@
-import { GraduationCap, CircuitBoard, Activity, Network, Sun, Moon } from 'lucide-react';
+
 import Link from 'next/link';
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CircuitBoardIcon } from "@hugeicons/core-free-icons";
+import { Activity03Icon } from "@hugeicons/core-free-icons";
+import { NeuralNetworkIcon } from "@hugeicons/core-free-icons";
+import { Mortarboard02Icon } from "@hugeicons/core-free-icons";
 
 export default function EducationTimeline() {
 
@@ -12,7 +17,7 @@ export default function EducationTimeline() {
           <div className="relative pl-8 group">
 
             <span className="absolute -left-[21px] top-1.5 bg-white dark:bg-slate-950 border-2 border-indigo-600 dark:border-indigo-400 rounded-xl p-2 text-indigo-600 dark:text-indigo-400 shadow-sm dark:shadow-[0_0_15px_rgba(99,102,241,0.15)] transition-colors duration-300 group-hover:border-cyan-500 dark:group-hover:border-cyan-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400">
-              <GraduationCap className="h-5 w-5" />
+            <HugeiconsIcon icon={Mortarboard02Icon} className="h-5 w-5" />
             </span>
 
             {/* Core Institution Details */}
@@ -40,7 +45,7 @@ export default function EducationTimeline() {
               {/* Point 1 */}
               <div className="flex gap-3 items-start">
                 <div className="mt-0.5 p-1 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 text-slate-500 dark:text-slate-400">
-                  <CircuitBoard className="h-3.5 w-3.5" />
+           <HugeiconsIcon icon={CircuitBoardIcon}  className="h-3.5 w-3.5" />
                 </div>
                 <p>
                   Acquired comprehensive core competencies across analog and digital circuit architectures, automated control systems, microelectronics processing, and high-efficiency power electronics frameworks.
@@ -50,7 +55,7 @@ export default function EducationTimeline() {
               {/* Point 2 */}
               <div className="flex gap-3 items-start">
                 <div className="mt-0.5 p-1 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 text-slate-500 dark:text-slate-400">
-                  <Activity className="h-3.5 w-3.5" />
+                <HugeiconsIcon icon={Activity03Icon}  className="h-3.5 w-3.5" />
                 </div>
                 <p>
                   Spearheaded the design and structural logic of a smart grid architecture simulation, successfully modeling the distribution balancing mechanics between renewable energy generators and localized storage matrix systems.
@@ -60,7 +65,7 @@ export default function EducationTimeline() {
               {/* Point 3 */}
               <div className="flex gap-3 items-start">
                 <div className="mt-0.5 p-1 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 text-slate-500 dark:text-slate-400">
-                  <Network className="h-3.5 w-3.5" />
+                  <HugeiconsIcon icon={NeuralNetworkIcon} className="h-3.5 w-3.5" />
                 </div>
                 <p>
                   Directed engineering processes for a low-power wireless sensor network (WSN) engineered for environmental monitoring, implementing data telemetry pipes to enable continuous remote analytics.

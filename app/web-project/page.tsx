@@ -1,11 +1,10 @@
-import {
-  Globe,
-  Code2,
-  Server,
-  Database,
-  ExternalLink,
-  CheckCircle2,
-} from "lucide-react";
+import { Globe02Icon } from "@hugeicons/core-free-icons";
+import { ExternalLinkIcon } from "@hugeicons/core-free-icons";
+import {FileCodeIcon} from "@hugeicons/core-free-icons";
+import {DatabaseIcon} from "@hugeicons/core-free-icons";
+import {ServerStack01Icon} from "@hugeicons/core-free-icons";
+import {CheckmarkCircle03Icon} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 interface WebProject {
   id: string;
@@ -195,7 +194,7 @@ export default async function WebProjectsPage() {
       {/* Header */}
       <div className="mb-14 border-b border-zinc-200 dark:border-zinc-800 pb-6">
         <div className="flex items-center gap-3 mb-3">
-          <Globe className="h-7 w-7 text-blue-600 dark:text-blue-400" />
+     <HugeiconsIcon icon={Globe02Icon} className="h-7 w-7 text-blue-600 dark:text-blue-400" />
 
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Web Applications & Digital Platforms
@@ -247,7 +246,7 @@ export default async function WebProjectsPage() {
                   key={feature}
                   className="flex items-start gap-2 text-sm"
                 >
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-blue-500 shrink-0" />
+               <HugeiconsIcon icon={CheckmarkCircle03Icon} className="h-4 w-4 mt-0.5 text-blue-500 shrink-0" />
                   <span className="text-zinc-700 dark:text-zinc-300">
                     {feature}
                   </span>
@@ -258,7 +257,7 @@ export default async function WebProjectsPage() {
             {/* Technologies */}
             <div className="border-t border-zinc-100 dark:border-zinc-800 pt-4">
               <div className="flex items-center gap-2 mb-3">
-                <Code2 className="h-4 w-4 text-zinc-400" />
+                <HugeiconsIcon icon={FileCodeIcon} className="h-4 w-4 text-zinc-400" />
                 <span className="text-xs uppercase tracking-wider font-semibold text-zinc-500">
                   Technologies
                 </span>
@@ -278,8 +277,8 @@ export default async function WebProjectsPage() {
               {/* Footer */}
               <div className="flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800 pt-4">
                 <div className="flex items-center gap-2 text-zinc-500">
-                  <Server className="h-4 w-4" />
-                  <Database className="h-4 w-4" />
+   <HugeiconsIcon icon={ServerStack01Icon}  className="h-4 w-4" />
+          <HugeiconsIcon icon={DatabaseIcon}  className="h-4 w-4" />
 
                   <span className="text-xs">
                     Production Deployment
@@ -293,7 +292,7 @@ export default async function WebProjectsPage() {
                   className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400"
                 >
                   Visit Site
-                  <ExternalLink className="h-4 w-4" />
+          <HugeiconsIcon icon={ExternalLinkIcon}  className="h-4 w-4" />
                 </a>
               </div>
             </div>

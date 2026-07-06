@@ -1,23 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
 
-function ThemeProvider({
-  children,
-  ...props
-}: React.ComponentProps<typeof NextThemesProvider>) {
+function ThemeProvider({ children }: React.PropsWithChildren) {
   return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-      {...props}
-    >
+    <>
       <ThemeHotkey />
       {children}
-    </NextThemesProvider>
+    </>
   )
 }
 
@@ -34,10 +24,36 @@ function isTypingTarget(target: EventTarget | null) {
   )
 }
 
-function ThemeHotkey() {
-  const { resolvedTheme, setTheme } = useTheme()
+function applyTheme(theme: "light" | "dark" | null) {
+  if (typeof window === "undefined") {
+    return
+  }
 
+  const root = document.documentElement
+  const resolvedTheme =
+    theme === "dark" || theme === "light"
+      ? theme
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+
+  root.classList.toggle("dark", resolvedTheme === "dark")
+  root.style.colorScheme = resolvedTheme
+
+  if (theme) {
+    window.localStorage.setItem("theme", theme)
+  }
+}
+
+function ThemeHotkey() {
   React.useEffect(() => {
+    const storedTheme = window.localStorage.getItem("theme")
+    const initialTheme = storedTheme === "dark" || storedTheme === "light"
+      ? storedTheme
+      : null
+
+    applyTheme(initialTheme)
+
     function onKeyDown(event: KeyboardEvent) {
       if (event.defaultPrevented || event.repeat) {
         return
@@ -55,15 +71,27 @@ function ThemeHotkey() {
         return
       }
 
-      setTheme(resolvedTheme === "dark" ? "light" : "dark")
+      const nextTheme = document.documentElement.classList.contains("dark")
+        ? "light"
+        : "dark"
+
+      applyTheme(nextTheme)
+    }
+
+    function onStorage(event: StorageEvent) {
+      if (event.key === "theme") {
+        applyTheme(event.newValue === "dark" || event.newValue === "light" ? event.newValue : null)
+      }
     }
 
     window.addEventListener("keydown", onKeyDown)
+    window.addEventListener("storage", onStorage)
 
     return () => {
       window.removeEventListener("keydown", onKeyDown)
+      window.removeEventListener("storage", onStorage)
     }
-  }, [resolvedTheme, setTheme])
+  }, [])
 
   return null
 }

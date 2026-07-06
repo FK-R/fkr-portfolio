@@ -1,12 +1,5 @@
 "use client";
-/**
- * Note: Use position fixed according to your needs
- * Desktop navbar is better positioned at the bottom
- * Mobile navbar is better positioned at bottom right.
- **/
-
-import { cn } from "@workspace/ui/lib/utils";
-import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
 import {
   AnimatePresence,
   MotionValue,
@@ -15,8 +8,10 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CancelSquareIcon } from "@hugeicons/core-free-icons";
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 export const FloatingDock = ({
   items,
@@ -84,7 +79,7 @@ const FloatingDockMobile = ({
         onClick={() => setOpen(!open)}
         className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
       >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+    <HugeiconsIcon icon={CancelSquareIcon}  className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
       </button>
     </div>
   );
@@ -168,7 +163,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a href={href}>
+    <Link href={href}>
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -196,6 +191,6 @@ function IconContainer({
           {icon}
         </motion.div>
       </motion.div>
-    </a>
+    </Link>
   );
 }

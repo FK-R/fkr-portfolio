@@ -1,4 +1,13 @@
-import { Cpu, Layers, Radio, CheckCircle2 } from "lucide-react";
+
+import { CpuChargeIcon } from "@hugeicons/core-free-icons";
+
+import { CheckmarkCircle01Icon } from "@hugeicons/core-free-icons";
+
+import { LayerIcon } from "@hugeicons/core-free-icons";
+
+import { BotIcon } from "@hugeicons/core-free-icons";
+
+import { HugeiconsIcon } from "@hugeicons/react";
 
 interface HardwareProject {
   id: string;
@@ -100,7 +109,7 @@ export default async function ProjectsPage() {
       {/* Header */}
       <div className="mb-12 border-b border-zinc-200 dark:border-zinc-800 pb-6">
         <div className="flex items-center gap-3 mb-2">
-          <Cpu className="h-7 w-7 text-emerald-600" />
+          <HugeiconsIcon icon={CpuChargeIcon}  className="h-7 w-7 text-emerald-600" />
           <h1 className="text-3xl md:text-4xl font-bold">
             Hardware & Embedded Systems
           </h1>
@@ -146,7 +155,7 @@ export default async function ProjectsPage() {
                   key={feature}
                   className="flex gap-2 items-start text-sm"
                 >
-                  <CheckCircle2 className="h-4 w-4 mt-0.5 text-emerald-600 shrink-0" />
+              <HugeiconsIcon icon={CheckmarkCircle01Icon} className="h-4 w-4 mt-0.5 text-emerald-600 shrink-0" />
                   <span>{feature}</span>
                 </div>
               ))}
@@ -155,7 +164,7 @@ export default async function ProjectsPage() {
             {/* Footer */}
             <div className="border-t border-zinc-200 dark:border-zinc-800 pt-4 space-y-3">
               <div className="flex flex-wrap gap-2 items-center">
-                <Layers className="h-4 w-4 text-zinc-400" />
+         <HugeiconsIcon icon={LayerIcon}  className="h-4 w-4 text-zinc-400" />
                 {project.hardwareStack.map((item) => (
                   <span
                     key={item}
@@ -167,7 +176,7 @@ export default async function ProjectsPage() {
               </div>
 
               <div className="flex flex-wrap gap-2 items-center">
-                <Radio className="h-4 w-4 text-zinc-400" />
+              <HugeiconsIcon icon={BotIcon} className="h-4 w-4 text-zinc-400" />
                 {project.protocols.map((protocol) => (
                   <span
                     key={protocol}

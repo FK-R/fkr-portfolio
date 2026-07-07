@@ -43,6 +43,12 @@ export default function PortfolioHome() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-4 pt-2">
+         <Link href="mailto:fakwer.uddin@gmail.com" target="_blank" rel="noopener noreferrer">
+            <button className="inline-flex h-11 animate-shimmer items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-gray-800/80 bg-[linear-gradient(110deg,#fff,45%,#f1f5f9,55%,#fff)] dark:bg-[linear-gradient(110deg,#030712,45%,#1A2E05,55%,#030712)] bg-[size:200%_100%] px-5 font-semibold text-sm text-gray-900 dark:text-[#ADFA1D] transition-colors shadow-sm shadow-gray-200 dark:shadow-none focus:outline-none">
+        <HugeiconsIcon icon={Calendar03Icon}  className="h-4 w-4" />
+            Contact Now
+            </button>
+         </Link>
             {/* <button className="inline-flex h-11 animate-shimmer items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-gray-800/80 bg-[linear-gradient(110deg,#fff,45%,#f1f5f9,55%,#fff)] dark:bg-[linear-gradient(110deg,#030712,45%,#1A2E05,55%,#030712)] bg-[size:200%_100%] px-5 font-semibold text-sm text-gray-900 dark:text-[#ADFA1D] transition-colors shadow-sm shadow-gray-200 dark:shadow-none focus:outline-none">
         <HugeiconsIcon icon={Calendar03Icon}  className="h-4 w-4" />
               Schedule a call

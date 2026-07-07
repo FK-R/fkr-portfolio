@@ -49,7 +49,7 @@ export default function RootLayout({
           </div>
           {/* <AnimatedThemeToggler className="fixed bottom-0 z-50 p-5" /> */}
           <TooltipProvider>
-            <div className="px-4 py-10 md:px-20 md:pt-20 md:pb-24">
+            <div className="px-4 py-10 pb-24 md:px-20 md:pt-20 md:pb-24">
               {children}
             </div>
           </TooltipProvider>

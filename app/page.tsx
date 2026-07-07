@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { File02Icon } from "@hugeicons/core-free-icons";
 import { MailAtSign02Icon } from "@hugeicons/core-free-icons";
@@ -6,13 +5,10 @@ import { Github01Icon } from "@hugeicons/core-free-icons";
 import { Linkedin01Icon } from "@hugeicons/core-free-icons";
 import { Calendar03Icon } from "@hugeicons/core-free-icons";
 import {CpuChargeIcon} from "@hugeicons/core-free-icons";
-
 import { ComputerTerminal01Icon } from "@hugeicons/core-free-icons";
 import { Database01Icon } from "@hugeicons/core-free-icons";
 import {LayerIcon} from "@hugeicons/core-free-icons";
 import {SmartPhone01Icon} from "@hugeicons/core-free-icons";
-
-
 import {Globe02Icon} from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import AceternityCard from '@/components/ui/AceternityCard'; 
@@ -23,15 +19,10 @@ export const metadata = {
 
 export default function PortfolioHome() {
   return (
-    <main className="min-h-screen relative overflow-hidden bg-gray-50 text-black dark:bg-[#000000] dark:text-gray-100 selection:bg-[#ADFA1D]/30 selection:text-[#5c850e] dark:selection:bg-[#ADFA1D]/20 dark:selection:text-[#ADFA1D]">
+    <main className=" relative overflow-hidden ">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-      
-      {/* Cinematic Soft Background Blobs */}
       <div className="absolute top-[-10%] left-1/2 -trangray-x-1/2 -z-10 h-[600px] w-[1000px] rounded-full blur-[140px] opacity-60 bg-gradient-to-tr from-[#ADFA1D]/10 via-cyan-500/[0.05] to-transparent dark:from-[#ADFA1D]/[0.02] dark:via-cyan-500/[0.02]" />
-
-      <div className="mx-auto max-w-5xl px-6 py-24 md:py-36 relative z-10">
-        
-        {/* --- HEADER INFRASTRUCTURE --- */}
+      <div className="relative z-10">
         <header className="mb-24 space-y-8">
           <div>
             <span className="relative inline-flex overflow-hidden rounded-full p-[1px] focus:outline-none">
@@ -44,7 +35,6 @@ export default function PortfolioHome() {
           </div>
 
           <div className="space-y-6">
-            {/* Clear, bold, readable linear text mask hierarchy */}
             <h1 className="text-5xl font-black tracking-tight sm:text-7xl bg-gradient-to-b from-gray-950 via-gray-800 to-gray-700 dark:from-white dark:via-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
               Md. Fakwer Uddin
             </h1>
@@ -52,15 +42,11 @@ export default function PortfolioHome() {
               Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and high-performance, modular web layouts.
             </p>
           </div>
-
-          {/* Action Call Routing Area */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
-            {/* High fidelity Aceternity style Shimmer Accent Action Button */}
             <button className="inline-flex h-11 animate-shimmer items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-gray-800/80 bg-[linear-gradient(110deg,#fff,45%,#f1f5f9,55%,#fff)] dark:bg-[linear-gradient(110deg,#030712,45%,#1A2E05,55%,#030712)] bg-[size:200%_100%] px-5 font-semibold text-sm text-gray-900 dark:text-[#ADFA1D] transition-colors shadow-sm shadow-gray-200 dark:shadow-none focus:outline-none">
         <HugeiconsIcon icon={Calendar03Icon}  className="h-4 w-4" />
               Schedule a call
             </button>
-            
             <button className="group inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white/60 text-gray-700 font-medium text-sm px-5 backdrop-blur-sm hover:bg-gray-50 hover:text-black dark:border-gray-800 dark:bg-gray-950/20 dark:text-gray-300 dark:hover:bg-gray-900/60 dark:hover:text-white transition-all">
               <HugeiconsIcon icon={File02Icon}  className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-[#ADFA1D] transition-colors" />
               Resume
@@ -70,12 +56,14 @@ export default function PortfolioHome() {
 
             <div className="flex items-center gap-1">
               {[
-                { href: "mailto:fakwer.uddin@nlytes.com", label: "Email Address Link", icon: <HugeiconsIcon icon={MailAtSign02Icon}  className="h-5 w-5" /> },
-                { href: "https://github.com", label: "GitHub Profile Portfolio", icon: <HugeiconsIcon icon={Github01Icon}  className="h-5 w-5" /> },
-                { href: "https://linkedin.com", label: "LinkedIn Professional Profile", icon: <HugeiconsIcon icon={Linkedin01Icon}  className="h-5 w-5" /> }
+                { href: "mailto:fakwer.uddin@gmail.com", label: "Email Address Link", icon: <HugeiconsIcon icon={MailAtSign02Icon}  className="h-5 w-5" /> },
+                { href: "https://github.com/FK-R", label: "GitHub Profile Portfolio", icon: <HugeiconsIcon icon={Github01Icon}  className="h-5 w-5" /> },
+                { href: "https://www.linkedin.com/in/fkr-uddin/", label: "LinkedIn Professional Profile", icon: <HugeiconsIcon icon={Linkedin01Icon}  className="h-5 w-5" /> }
               ].map((link, i) => (
                 <Link 
                   key={i}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   href={link.href} 
                   className="p-2.5 rounded-xl border border-transparent text-gray-500 hover:text-black hover:bg-gray-200/50 dark:text-gray-400 dark:hover:text-[#ADFA1D] dark:hover:border-gray-900 dark:hover:bg-gray-950 transition-all"
                   aria-label={link.label}
@@ -86,11 +74,7 @@ export default function PortfolioHome() {
             </div>
           </div>
         </header>
-
-        {/* --- SKILLS BENTO ARCHITECTURE --- */}
         <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          
-          {/* Card 1: Hardware & Embedded Core */}
           <AceternityCard className="sm:col-span-2 dark:border-[#ddd]/10">
             <div className="flex items-start justify-between">
               <div className="space-y-1.5">
@@ -107,8 +91,6 @@ export default function PortfolioHome() {
               ))}
             </div>
           </AceternityCard>
-
-          {/* Card 2: Frontend */}
           <AceternityCard>
             <div className="flex items-start justify-between">
               <div className="space-y-1.5">
@@ -125,8 +107,6 @@ export default function PortfolioHome() {
               ))}
             </div>
           </AceternityCard>
-
-          {/* Card 3: Backend */}
           <AceternityCard>
             <div className="flex items-start justify-between">
               <div className="space-y-1.5">
@@ -143,8 +123,6 @@ export default function PortfolioHome() {
               ))}
             </div>
           </AceternityCard>
-
-          {/* Card 4: Database Logic */}
           <AceternityCard>
             <div className="flex items-start justify-between">
               <div className="space-y-1.5">
@@ -161,8 +139,6 @@ export default function PortfolioHome() {
               ))}
             </div>
           </AceternityCard>
-
-          {/* Card 5: Cloud Engineering */}
           <AceternityCard>
             <div className="flex items-start justify-between">
               <div className="space-y-1.5">
@@ -179,8 +155,6 @@ export default function PortfolioHome() {
               ))}
             </div>
           </AceternityCard>
-
-          {/* Card 6: Mobile Core & Tools */}
           <AceternityCard className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-start justify-between">
               <div className="space-y-1.5">

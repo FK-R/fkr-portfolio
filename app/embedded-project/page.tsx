@@ -1,25 +1,18 @@
-
-import { CpuChargeIcon } from "@hugeicons/core-free-icons";
-
-import { CheckmarkCircle01Icon } from "@hugeicons/core-free-icons";
-
-import { LayerIcon } from "@hugeicons/core-free-icons";
-
-import { BotIcon } from "@hugeicons/core-free-icons";
-
-import { HugeiconsIcon } from "@hugeicons/react";
-
+import { CpuChargeIcon } from "@hugeicons/core-free-icons"
+import { CheckmarkCircle01Icon } from "@hugeicons/core-free-icons"
+import { LayerIcon } from "@hugeicons/core-free-icons"
+import { BotIcon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 interface HardwareProject {
-  id: string;
-  title: string;
-  category: "Large-Scale IoT" | "Industrial Automation" | "Research & Labs";
-  description: string;
-  hardwareStack: string[];
-  protocols: string[];
-  keyFeatures: string[];
-  liveStatus: string;
+  id: string
+  title: string
+  category: "Large-Scale IoT" | "Industrial Automation" | "Research & Labs"
+  description: string
+  hardwareStack: string[]
+  protocols: string[]
+  keyFeatures: string[]
+  liveStatus: string
 }
-
 const embeddedProjects: HardwareProject[] = [
   {
     id: "water-management",
@@ -87,12 +80,7 @@ const embeddedProjects: HardwareProject[] = [
     category: "Research & Labs",
     description:
       "A repository of academic designs, firmware studies, and hardware explorations built across multiple microcontrollers.",
-    hardwareStack: [
-      "ESP32",
-      "Atmega328P",
-      "UVC Hardware",
-      "IMU Sensors",
-    ],
+    hardwareStack: ["ESP32", "Atmega328P", "UVC Hardware", "IMU Sensors"],
     protocols: ["I2C", "SPI", "UART", "RF"],
     keyFeatures: [
       "Published IEEE implementations.",
@@ -101,21 +89,24 @@ const embeddedProjects: HardwareProject[] = [
     ],
     liveStatus: "4+ IEEE Publications",
   },
-];
+]
 
 export default async function ProjectsPage() {
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 py-16">
+    <section className="w-full">
       {/* Header */}
-      <div className="mb-12 border-b border-zinc-200 dark:border-zinc-800 pb-6">
-        <div className="flex items-center gap-3 mb-2">
-          <HugeiconsIcon icon={CpuChargeIcon}  className="h-7 w-7 text-emerald-600" />
-          <h1 className="text-3xl md:text-4xl font-bold">
+      <div className="mb-12 border-b border-zinc-200 pb-6 dark:border-zinc-800">
+        <div className="mb-2 flex items-center gap-3">
+          <HugeiconsIcon
+            icon={CpuChargeIcon}
+            className="h-7 w-7 text-[#ADFA1D] dark:text-[#ADFA1D]"
+          />
+          <h1 className="text-3xl font-bold md:text-4xl">
             Hardware & Embedded Systems
           </h1>
         </div>
 
-        <p className="text-zinc-500 dark:text-zinc-400 max-w-3xl">
+        <p className="max-w-3xl text-zinc-500 dark:text-zinc-400">
           Production-grade IoT solutions, industrial automation systems,
           embedded firmware architectures, and research-driven hardware
           projects.
@@ -123,64 +114,70 @@ export default async function ProjectsPage() {
       </div>
 
       {/* Projects */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {embeddedProjects.map((project) => (
           <article
             key={project.id}
-            className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 hover:shadow-lg transition-all"
+            className="rounded-2xl border border-zinc-200 bg-white p-6 transition-all hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-500  dark:bg-zinc-950"
           >
             {/* Top Row */}
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900">
+            <div className="mb-4 flex items-center justify-between">
+              <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold dark:bg-zinc-900">
                 {project.category}
               </span>
 
-              <span className="text-xs text-emerald-600 font-medium">
+              <span className="text-xs font-medium text-[#ADFA1D]">
                 ● {project.liveStatus}
               </span>
             </div>
 
             {/* Title */}
-            <h2 className="text-xl font-bold mb-3">{project.title}</h2>
+            <h2 className="mb-3 text-xl font-bold">{project.title}</h2>
 
             {/* Description */}
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-5">
+            <p className="mb-5 text-sm text-zinc-600 dark:text-zinc-400">
               {project.description}
             </p>
 
             {/* Features */}
-            <div className="space-y-2 mb-6">
+            <div className="mb-6 space-y-2">
               {project.keyFeatures.map((feature) => (
-                <div
-                  key={feature}
-                  className="flex gap-2 items-start text-sm"
-                >
-              <HugeiconsIcon icon={CheckmarkCircle01Icon} className="h-4 w-4 mt-0.5 text-emerald-600 shrink-0" />
+                <div key={feature} className="flex items-start gap-2 text-sm">
+                  <HugeiconsIcon
+                    icon={CheckmarkCircle01Icon}
+                    className="mt-0.5 h-4 w-4 shrink-0 text-[#ADFA1D]"
+                  />
                   <span>{feature}</span>
                 </div>
               ))}
             </div>
 
             {/* Footer */}
-            <div className="border-t border-zinc-200 dark:border-zinc-800 pt-4 space-y-3">
-              <div className="flex flex-wrap gap-2 items-center">
-         <HugeiconsIcon icon={LayerIcon}  className="h-4 w-4 text-zinc-400" />
+            <div className="space-y-3 border-t border-zinc-200 pt-4 dark:border-zinc-800">
+              <div className="flex flex-wrap items-center gap-2">
+                <HugeiconsIcon
+                  icon={LayerIcon}
+                  className="h-4 w-4 text-zinc-400"
+                />
                 {project.hardwareStack.map((item) => (
                   <span
                     key={item}
-                    className="px-2 py-1 text-xs rounded bg-zinc-100 dark:bg-zinc-900"
+                    className="rounded bg-zinc-100 px-2 py-1 text-xs dark:bg-zinc-900"
                   >
                     {item}
                   </span>
                 ))}
               </div>
 
-              <div className="flex flex-wrap gap-2 items-center">
-              <HugeiconsIcon icon={BotIcon} className="h-4 w-4 text-zinc-400" />
+              <div className="flex flex-wrap items-center gap-2">
+                <HugeiconsIcon
+                  icon={BotIcon}
+                  className="h-4 w-4 text-zinc-400"
+                />
                 {project.protocols.map((protocol) => (
                   <span
                     key={protocol}
-                    className="text-xs font-medium text-emerald-600"
+                    className="text-xs font-medium text-[#ADFA1D]"
                   >
                     {protocol}
                   </span>
@@ -191,5 +188,5 @@ export default async function ProjectsPage() {
         ))}
       </div>
     </section>
-  );
+  )
 }

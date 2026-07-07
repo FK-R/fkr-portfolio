@@ -1,241 +1,326 @@
-import { 
-  Certificate01Icon, 
-  CpuIcon, 
-  ChampionIcon, 
-  BookOpen01Icon, 
+
+
+import {
+  Certificate01Icon,
+  CpuIcon,
+  ChampionIcon,
+  BookOpen01Icon,
   Mic01Icon,
-  Github01Icon, 
-  Linkedin01Icon, 
+  Github01Icon,
+  Linkedin01Icon,
   Mail01Icon,
   CodeIcon,
-  MentoringIcon
+  MentoringIcon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
 
-// Premium Structural Card Component
-const Card = ({ children, className = "", noPadding = false }: { children: React.ReactNode; className?: string, noPadding?: boolean }) => (
-  <div className={`
-    relative overflow-hidden rounded-3xl border transition-all duration-300 ease-out
-    bg-white border-slate-200/80 shadow-sm
-    dark:bg-[#0a0a0a] dark:border-white/10
-    hover:border-slate-300 dark:hover:border-[#ADFA1D]/30
-    ${noPadding ? '' : 'p-6 md:p-8'}
-    ${className}
-  `}>
+
+const ENGAGEMENTS = [
+  {
+    role: "Technology Facilitator",
+    org: "BuildNation (Ispahani AI Accelerator)",
+    desc: "Facilitated a 30-hour intensive workshop for senior management, focusing on AI proficiency and the \"Game of Skill\" framework to transform leadership and operational efficiency.",
+  },
+  {
+    role: "Lead Judge",
+    org: "IIUC Tech Fest 2025",
+    desc: "Primary adjudicator for the Robo Soccer competition. Evaluated inter-university teams on mechanical design, programming efficiency, and tactical execution.",
+  },
+  {
+    role: "Workshop Instructor",
+    org: "IEEE RAS & Automation Society IIUC",
+    desc: "Designed and delivered a comprehensive technical workshop on Robo Soccer assembly. Mentored participants on chassis construction, motor control, and wireless comms.",
+  },
+] as const;
+
+const COURSES = [
+  { title: "PCB Design and Fabrication", type: "5-Day Workshop", issuer: "IEEE RAS IIUC SBC", icon: CpuIcon },
+  { title: "Microcontroller & Robotics", type: "45-Hour Course", issuer: "Desikarigor Training Circle", icon: CpuIcon },
+  { title: "Embedded Design Challenge", type: "Participation", issuer: "Embedded System & Robotics Group", icon: CpuIcon },
+  { title: "Bluetooth & RF Controlled Robot", type: "Workshop", issuer: "Embedded System & Robotics Group", icon: CpuIcon },
+  { title: "Full Stack Web Development (Node.js)", type: "40-Hour Course", issuer: "mPair Lab", icon: CodeIcon },
+  { title: "Scientific Research Paper Writing", type: "Workshop", issuer: "IEEE, IIUC", icon: BookOpen01Icon },
+  { title: "Inter-University Hackathon 2020", type: "24-Hour Event", issuer: "FSE, IIUC", icon: CodeIcon },
+  { title: "Soccer Bot Challenge / Robot-Fight", type: "Participant", issuer: "IIUC Tech Fest", icon: CpuIcon },
+] as const;
+
+const LEADERSHIP = [
+  { role: "Executive Member", org: "Embedded & Robotics Group, EEE, IIUC", date: "2022", current: false },
+  { role: "Former Ambassador", org: "mPair Lab", date: "Mar 2021 - Sep 2021", current: false },
+  { role: "Assistant Trainer", org: "Technotra Robotics Association", date: "2019 - 2021", current: false },
+  { role: "Volunteer", org: "IIUC Tech Fest (Robo Fight Segment)", date: "2020", current: false },
+] as const;
+
+const SOCIALS = [
+  { href: "https://github.com/FK-R", icon: Github01Icon, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/fkr-uddin/", icon: Linkedin01Icon, label: "LinkedIn" },
+  { href: "mailto:fakwer.uddin@gmail.com", icon: Mail01Icon, label: "Email" },
+] as const;
+
+/* ------------------------------------------------------------------ */
+/*  Shared primitives                                                 */
+/* ------------------------------------------------------------------ */
+
+const Card = ({
+  children,
+  className = "",
+  noPadding = false,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  noPadding?: boolean;
+}) => (
+  <div
+    className={`
+      relative overflow-hidden rounded-2xl sm:rounded-3xl border transition-colors duration-300 ease-out
+      bg-white border-slate-200/80 shadow-sm
+      dark:bg-[#0a0a0a] dark:border-white/10
+      hover:border-slate-300 dark:hover:border-[#ADFA1D]/30
+      ${noPadding ? "" : "p-5 sm:p-6 md:p-8"}
+      ${className}
+    `}
+  >
     {/* Subtle inner ambient glow */}
-    <div className="absolute inset-0 bg-gradient-to-br from-[#ADFA1D]/0 to-[#ADFA1D]/[0.02] dark:to-[#ADFA1D]/[0.05] pointer-events-none" />
-    <div className="relative z-10 h-full flex flex-col">{children}</div>
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#ADFA1D]/0 to-[#ADFA1D]/[0.02] dark:to-[#ADFA1D]/[0.05]" />
+    <div className="relative z-10 flex h-full flex-col">{children}</div>
   </div>
 );
 
+const SectionHeading = ({
+  icon,
+  iconWrapClass,
+  title,
+  size = "lg",
+}: {
+  icon: any;
+  iconWrapClass: string;
+  title: string;
+  size?: "lg" | "xl";
+}) => (
+  <div
+    className={`mb-6 flex items-center gap-3 border-b border-slate-100 pb-4 dark:border-white/5 ${
+      size === "xl" ? "sm:mb-8" : ""
+    }`}
+  >
+    <div className={`shrink-0 rounded-xl p-2.5 ${iconWrapClass}`}>
+      <HugeiconsIcon icon={icon} className="h-5 w-5" />
+    </div>
+    <h2
+      className={`font-bold tracking-tight text-slate-900 dark:text-white ${
+        size === "xl" ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"
+      }`}
+    >
+      {title}
+    </h2>
+  </div>
+);
+
+/* ------------------------------------------------------------------ */
+/*  Page                                                               */
+/* ------------------------------------------------------------------ */
+
 export default function MoreInfoPage() {
   return (
-    <main className="min-h-screen relative overflow-hidden transition-colors duration-300 bg-slate-50 text-slate-900 dark:bg-[#050505] dark:text-slate-100 selection:bg-[#ADFA1D]/30 selection:text-[#5c850e] dark:selection:bg-[#ADFA1D]/30 dark:selection:text-[#ADFA1D] pb-24">
-      
-      {/* Background Ambience */}
-      <div className="absolute top-[5%] right-[10%] -z-10 h-[500px] w-[500px] rounded-full blur-[120px] bg-[#ADFA1D]/5 dark:bg-[#ADFA1D]/[0.04]" />
-      
-      <div className="mx-auto max-w-6xl px-6 pt-24 relative z-10">
-        
-        {/* --- HEADER --- */}
-        <header className="mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm dark:border-[#ADFA1D]/20 dark:bg-[#ADFA1D]/5 mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6a9911] dark:bg-[#ADFA1D] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6a9911] dark:bg-[#ADFA1D]"></span>
-            </span>
-            <p className="text-xs font-semibold tracking-widest uppercase text-[#5c850e] dark:text-[#ADFA1D]">
-              Beyond The Code
-            </p>
-          </div>
-          <h1 className="text-4xl font-extrabold tracking-tighter sm:text-6xl text-slate-900 dark:text-white mb-4">
-            Impact & Engagements
-          </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
-            A comprehensive overview of my leadership roles, technical workshops, competition achievements, and community involvement.
+    <main className="relative">
+      {/* --- HEADER --- */}
+      <header className="mb-10 sm:mb-16">
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm dark:border-[#ADFA1D]/20 dark:bg-[#ADFA1D]/5 sm:mb-6">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#6a9911] opacity-75 dark:bg-[#ADFA1D]" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#6a9911] dark:bg-[#ADFA1D]" />
+          </span>
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-[#5c850e] dark:text-[#ADFA1D] sm:text-xs">
+            Beyond The Code
           </p>
-        </header>
+        </div>
+        <h1 className="text-3xl font-extrabold tracking-tighter text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+          Impact &amp; Engagements
+        </h1>
+        <p className="mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-400 sm:text-lg">
+          A comprehensive overview of my leadership roles, technical workshops, competition
+          achievements, and community involvement.
+        </p>
+      </header>
 
-        {/* --- STRUCTURAL BENTO GRID --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          {/* LEFT COLUMN (Wider for heavy text content) */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            
-            {/* 1. Professional Engagements (Timeline Structure) */}
-            <Card>
-              <div className="flex items-center gap-3 mb-8 border-b border-slate-100 dark:border-white/5 pb-4">
-                <div className="p-2.5 rounded-xl bg-[#ADFA1D]/10 text-[#5c850e] dark:text-[#ADFA1D]">
-                  <HugeiconsIcon icon={Mic01Icon} className="h-5 w-5" />
-                </div>
-                <h2 className="text-2xl font-bold tracking-tight">Professional Engagements</h2>
-              </div>
+      {/* --- BENTO GRID --- */}
+      <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-12">
+        {/* LEFT COLUMN */}
+        <div className="flex flex-col gap-5 sm:gap-6 lg:col-span-7">
+          {/* Professional Engagements — simple left-rail timeline,
+              consistent on every viewport instead of a desktop-only
+              zig-zag that breaks below md. */}
+          <Card>
+            <SectionHeading
+              icon={Mic01Icon}
+              iconWrapClass="bg-[#ADFA1D]/10 text-[#5c850e] dark:text-[#ADFA1D]"
+              title="Professional Engagements"
+              size="xl"
+            />
 
-              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 dark:before:via-white/10 before:to-transparent">
-                
-                {/* Engagement 1 */}
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full border-2 border-white dark:border-[#0a0a0a] bg-slate-200 dark:bg-white/20 group-hover:bg-[#ADFA1D] transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm z-10" />
-                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 hover:border-[#ADFA1D]/30 transition-colors">
-                    <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-1">Technology Facilitator</h3>
-                    <p className="text-sm font-semibold text-[#5c850e] dark:text-[#ADFA1D] mb-3">BuildNation (Ispahani AI Accelerator)</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                      Facilitated a 30-hour intensive workshop for senior management, focusing on AI proficiency and the "Game of Skill" framework to transform leadership and operational efficiency.
+            <ol className="relative space-y-6 pl-7 sm:pl-8">
+              <div
+                aria-hidden
+                className="absolute bottom-2 left-[9px] top-2 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent dark:via-white/10 sm:left-[11px]"
+              />
+              {ENGAGEMENTS.map((item) => (
+                <li key={item.role} className="group relative">
+                  <span
+                    aria-hidden
+                    className="absolute -left-7 top-1 h-5 w-5 rounded-full border-2 border-white bg-slate-200 shadow-sm transition-colors group-hover:bg-[#ADFA1D] dark:border-[#0a0a0a] dark:bg-white/20 sm:-left-8 sm:h-6 sm:w-6"
+                  />
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-colors group-hover:border-[#ADFA1D]/30 dark:border-white/5 dark:bg-white/5 sm:p-5">
+                    <h3 className="mb-1 text-base font-bold text-slate-900 dark:text-white sm:text-lg">
+                      {item.role}
+                    </h3>
+                    <p className="mb-2.5 text-sm font-semibold text-[#5c850e] dark:text-[#ADFA1D] sm:mb-3">
+                      {item.org}
+                    </p>
+                    <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                      {item.desc}
                     </p>
                   </div>
-                </div>
+                </li>
+              ))}
+            </ol>
+          </Card>
 
-                {/* Engagement 2 */}
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full border-2 border-white dark:border-[#0a0a0a] bg-slate-200 dark:bg-white/20 group-hover:bg-[#ADFA1D] transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm z-10" />
-                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 hover:border-[#ADFA1D]/30 transition-colors">
-                    <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-1">Lead Judge</h3>
-                    <p className="text-sm font-semibold text-[#5c850e] dark:text-[#ADFA1D] mb-3">IIUC Tech Fest 2025</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                      Primary adjudicator for the Robo Soccer competition. Evaluated inter-university teams on mechanical design, programming efficiency, and tactical execution.
-                    </p>
-                  </div>
-                </div>
+          {/* Courses & Workshops */}
+          <Card>
+            <SectionHeading
+              icon={BookOpen01Icon}
+              iconWrapClass="bg-blue-500/10 text-blue-600 dark:text-blue-400"
+              title="Courses & Workshops"
+            />
 
-                {/* Engagement 3 */}
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full border-2 border-white dark:border-[#0a0a0a] bg-slate-200 dark:bg-white/20 group-hover:bg-[#ADFA1D] transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm z-10" />
-                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-1.5rem)] p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 hover:border-[#ADFA1D]/30 transition-colors">
-                    <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-1">Workshop Instructor</h3>
-                    <p className="text-sm font-semibold text-[#5c850e] dark:text-[#ADFA1D] mb-3">IEEE RAS & Automation Society IIUC</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                      Designed and delivered a comprehensive technical workshop on Robo Soccer assembly. Mentored participants on chassis construction, motor control, and wireless comms.
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-            </Card>
-
-            {/* 2. Courses & Workshops (Data Table / Grid Structure) */}
-            <Card>
-              <div className="flex items-center gap-3 mb-6 border-b border-slate-100 dark:border-white/5 pb-4">
-                <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                  <HugeiconsIcon icon={BookOpen01Icon} className="h-5 w-5" />
-                </div>
-                <h2 className="text-2xl font-bold tracking-tight">Courses & Workshops</h2>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {[
-                  { title: "PCB Design and Fabrication", type: "5-Day Workshop", issuer: "IEEE RAS IIUC SBC", icon: CpuIcon },
-                  { title: "Microcontroller & Robotics", type: "45-Hour Course", issuer: "Desikarigor Training Circle", icon: CpuIcon },
-                  { title: "Embedded Design Challenge", type: "Participation", issuer: "Embedded System & Robotics Group", icon: CpuIcon },
-                  { title: "Bluetooth & RF Controlled Robot", type: "Workshop", issuer: "Embedded System & Robotics Group", icon: CpuIcon },
-                  { title: "Full Stack Web Development (Node.js)", type: "40-Hour Course", issuer: "mPair Lab", icon: CodeIcon },
-                  { title: "Scientific Research Paper Writing", type: "Workshop", issuer: "IEEE, IIUC", icon: BookOpen01Icon },
-                  { title: "Inter-University Hackathon 2020", type: "24-Hour Event", issuer: "FSE, IIUC", icon: CodeIcon },
-                  { title: "Soccer Bot Challenge / Robot-Fight", type: "Participant", issuer: "IIUC Tech Fest", icon: CpuIcon },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-white/10 transition-colors">
-                    <div className="mt-1">
-                      <HugeiconsIcon icon={item.icon} className="h-4 w-4 text-slate-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-sm text-slate-900 dark:text-slate-200 leading-tight mb-1">{item.title}</h4>
-                      <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                        <span className="font-medium text-[#5c850e] dark:text-[#ADFA1D] bg-[#ADFA1D]/10 px-1.5 py-0.5 rounded">{item.type}</span>
-                        <span className="truncate">{item.issuer}</span>
-                      </div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {COURSES.map((item) => (
+                <div
+                  key={item.title}
+                  className="flex gap-3 rounded-2xl border border-transparent bg-slate-50 p-4 transition-colors hover:border-slate-200 dark:bg-white/5 dark:hover:border-white/10"
+                >
+                  <HugeiconsIcon
+                    icon={item.icon}
+                    className="mt-1 h-4 w-4 shrink-0 text-slate-400"
+                  />
+                  <div className="min-w-0">
+                    <h4 className="mb-1 text-sm font-semibold leading-tight text-slate-900 dark:text-slate-200">
+                      {item.title}
+                    </h4>
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+                      <span className="rounded bg-[#ADFA1D]/10 px-1.5 py-0.5 font-medium text-[#5c850e] dark:text-[#ADFA1D]">
+                        {item.type}
+                      </span>
+                      <span className="truncate">{item.issuer}</span>
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+
+        {/* RIGHT COLUMN */}
+        <div className="flex flex-col gap-5 sm:gap-6 lg:col-span-5">
+          {/* Key Achievements */}
+          <Card>
+            <SectionHeading
+              icon={ChampionIcon}
+              iconWrapClass="bg-amber-500/10 text-amber-600 dark:text-amber-400"
+              title="Key Achievements"
+            />
+
+            <div className="flex flex-col gap-4">
+              <div className="group relative overflow-hidden rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-500/20 dark:bg-amber-500/5">
+                <HugeiconsIcon
+                  icon={Certificate01Icon}
+                  aria-hidden
+                  className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 text-amber-500 opacity-10 transition-transform duration-500 group-hover:scale-110"
+                />
+                <span className="relative mb-3 inline-block rounded-full bg-amber-200/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-500/20 dark:text-amber-300">
+                  Champion
+                </span>
+                <h3 className="relative mb-1 font-bold text-slate-900 dark:text-white">
+                  Embedded System Challenge
+                </h3>
+                <p className="relative text-sm text-slate-600 dark:text-slate-400">
+                  Tech Fest 2020 • Faculty of Science &amp; Engineering, IIUC
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-cyan-500/30 dark:border-white/10 dark:bg-white/5">
+                <span className="mb-3 inline-block rounded-full bg-cyan-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-700 dark:text-cyan-400">
+                  Selected Team
+                </span>
+                <h3 className="mb-1 font-bold text-slate-900 dark:text-white">
+                  National Hackathon on Frontier Tech
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  Feb 2020 • Organized by &quot;idea&quot; at Independent University, Bangladesh
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Leadership & Volunteering */}
+          <Card>
+            <SectionHeading
+              icon={MentoringIcon}
+              iconWrapClass="bg-purple-500/10 text-purple-600 dark:text-purple-400"
+              title="Leadership & Volunteering"
+            />
+
+            <ul className="space-y-4">
+              {LEADERSHIP.map((item, idx) => (
+                <li
+                  key={item.role}
+                  className={`flex items-start justify-between gap-3 pb-4 ${
+                    idx !== LEADERSHIP.length - 1
+                      ? "border-b border-slate-100 dark:border-white/5"
+                      : "pb-0"
+                  }`}
+                >
+                  <div className="min-w-0">
+                    <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-200">
+                      {item.role}
+                    </h4>
+                    <p className="mt-0.5 truncate text-xs text-slate-500">{item.org}</p>
+                  </div>
+                  <span
+                    className={`shrink-0 whitespace-nowrap rounded px-2 py-1 text-[10px] font-semibold ${
+                      item.current
+                        ? "bg-[#ADFA1D]/10 text-[#5c850e] dark:text-[#ADFA1D]"
+                        : "bg-slate-100 text-slate-400 dark:bg-white/5 dark:text-slate-500"
+                    }`}
+                  >
+                    {item.date}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+
+          {/* Contact CTA */}
+          <Card className="mt-auto border-transparent bg-slate-900 dark:border-[#ADFA1D]/20 dark:bg-[#ADFA1D]/5">
+            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+              <div>
+                <h3 className="font-bold text-white dark:text-[#ADFA1D]">Let&apos;s collaborate.</h3>
+                <p className="mt-1 text-sm text-slate-400">Available for new opportunities.</p>
+              </div>
+              <div className="flex gap-2">
+                {SOCIALS.map(({ href, icon, label }) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    className="rounded-full bg-white/10 p-2.5 text-white transition-colors hover:bg-[#ADFA1D] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ADFA1D]"
+                  >
+                    <HugeiconsIcon icon={icon} className="h-5 w-5" />
+                  </Link>
                 ))}
               </div>
-            </Card>
-
-          </div>
-
-          {/* RIGHT COLUMN (Narrower for highlight cards) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            
-            {/* 3. Achievements (Trophy layout) */}
-            <Card>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
-                  <HugeiconsIcon icon={ChampionIcon} className="h-5 w-5" />
-                </div>
-                <h2 className="text-xl font-bold tracking-tight">Key Achievements</h2>
-              </div>
-              
-              <div className="flex flex-col gap-4">
-                <div className="p-5 rounded-2xl border border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/5 relative overflow-hidden group">
-                  <div className="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
-                    <HugeiconsIcon icon={Certificate01Icon} className="h-24 w-24 text-amber-500" />
-                  </div>
-                  <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-200/50 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 mb-3">
-                    Champion
-                  </span>
-                  <h3 className="font-bold text-slate-900 dark:text-white mb-1">Embedded System Challenge</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Tech Fest 2020 • Faculty of Science & Engineering, IIUC</p>
-                </div>
-
-                <div className="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 hover:border-cyan-500/30 transition-colors">
-                  <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 mb-3">
-                    Selected Team
-                  </span>
-                  <h3 className="font-bold text-slate-900 dark:text-white mb-1">National Hackathon on Frontier Tech</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Feb 2020 • Organized by "idea" at Independent University, Bangladesh</p>
-                </div>
-              </div>
-            </Card>
-
-            {/* 4. Leadership & Volunteer */}
-            <Card>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
-                  <HugeiconsIcon icon={MentoringIcon} className="h-5 w-5" />
-                </div>
-                <h2 className="text-xl font-bold tracking-tight">Leadership & Volunteering</h2>
-              </div>
-
-              <div className="space-y-4">
-                {[
-                  { role: "Executive Member", org: "Embedded & Robotics Group, EEE, IIUC", date: "Present" },
-                  { role: "Former Ambassador", org: "mPair Lab", date: "Mar 2021 - Sep 2021" },
-                  { role: "Assistant Trainer", org: "Technotra Robotics Association", date: "2019 - 2021" },
-                  { role: "Volunteer", org: "IIUC Tech Fest (Robo Fight Segment)", date: "2020" },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex justify-between items-start pb-4 border-b border-slate-100 dark:border-white/5 last:border-0 last:pb-0">
-                    <div>
-                      <h4 className="font-semibold text-sm text-slate-900 dark:text-slate-200">{item.role}</h4>
-                      <p className="text-xs text-slate-500 mt-0.5">{item.org}</p>
-                    </div>
-                    <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-white/5 px-2 py-1 rounded">
-                      {item.date}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Card>
-
-            {/* 5. Connect / Socials Footer Card */}
-            <Card className="mt-auto bg-slate-900 dark:bg-[#ADFA1D]/5 border-transparent dark:border-[#ADFA1D]/20">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div>
-                  <h3 className="font-bold text-white dark:text-[#ADFA1D]">Let's collaborate.</h3>
-                  <p className="text-sm text-slate-400 dark:text-slate-400 mt-1">Available for new opportunities.</p>
-                </div>
-                <div className="flex gap-2">
-                  <Link href="#" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
-                    <HugeiconsIcon icon={Github01Icon} className="h-5 w-5" />
-                  </Link>
-                  <Link href="#" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
-                    <HugeiconsIcon icon={Linkedin01Icon} className="h-5 w-5" />
-                  </Link>
-                  <Link href="mailto:hello@example.com" className="p-2.5 rounded-full bg-white/10 text-white hover:bg-[#ADFA1D] hover:text-black transition-colors">
-                    <HugeiconsIcon icon={Mail01Icon} className="h-5 w-5" />
-                  </Link>
-                </div>
-              </div>
-            </Card>
-
-          </div>
+            </div>
+          </Card>
         </div>
       </div>
     </main>

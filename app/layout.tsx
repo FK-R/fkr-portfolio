@@ -47,11 +47,11 @@ export default function RootLayout({
           <div className="fixed bottom-0 z-30">
             <Navbar />
           </div>
-          <AnimatedThemeToggler className="fixed bottom-0 z-50 p-5" />
-           <TooltipProvider>
-          <div className="px-4 py-10 md:px-20 md:pt-20 md:pb-24">
-            {children}
-          </div>
+          {/* <AnimatedThemeToggler className="fixed bottom-0 z-50 p-5" /> */}
+          <TooltipProvider>
+            <div className="px-4 py-10 md:px-20 md:pt-20 md:pb-24">
+              {children}
+            </div>
           </TooltipProvider>
         </ThemeProvider>
       </body>

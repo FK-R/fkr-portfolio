@@ -93,7 +93,7 @@ const embeddedProjects: HardwareProject[] = [
 
 export default async function ProjectsPage() {
   return (
-    <section className="w-full">
+    <section className="w-full relative">
       {/* Header */}
       <div className="mb-12 border-b border-zinc-200 pb-6 dark:border-zinc-800">
         <div className="mb-2 flex items-center gap-3">

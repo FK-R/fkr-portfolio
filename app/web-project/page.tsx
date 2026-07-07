@@ -159,7 +159,7 @@ const webProjects: WebProject[] = [
 
 export default async function WebProjectsPage() {
   return (
-    <section className="w-full">
+    <section className="w-full relative">
       <div className="mb-14 border-b border-zinc-200 pb-6 dark:border-zinc-800">
         <div className="mb-3 flex items-center gap-3">
           <HugeiconsIcon

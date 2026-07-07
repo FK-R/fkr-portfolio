@@ -43,14 +43,14 @@ export default function PortfolioHome() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-4 pt-2">
-            <button className="inline-flex h-11 animate-shimmer items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-gray-800/80 bg-[linear-gradient(110deg,#fff,45%,#f1f5f9,55%,#fff)] dark:bg-[linear-gradient(110deg,#030712,45%,#1A2E05,55%,#030712)] bg-[size:200%_100%] px-5 font-semibold text-sm text-gray-900 dark:text-[#ADFA1D] transition-colors shadow-sm shadow-gray-200 dark:shadow-none focus:outline-none">
+            {/* <button className="inline-flex h-11 animate-shimmer items-center justify-center gap-2 rounded-xl border border-gray-200 dark:border-gray-800/80 bg-[linear-gradient(110deg,#fff,45%,#f1f5f9,55%,#fff)] dark:bg-[linear-gradient(110deg,#030712,45%,#1A2E05,55%,#030712)] bg-[size:200%_100%] px-5 font-semibold text-sm text-gray-900 dark:text-[#ADFA1D] transition-colors shadow-sm shadow-gray-200 dark:shadow-none focus:outline-none">
         <HugeiconsIcon icon={Calendar03Icon}  className="h-4 w-4" />
               Schedule a call
             </button>
             <button className="group inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white/60 text-gray-700 font-medium text-sm px-5 backdrop-blur-sm hover:bg-gray-50 hover:text-black dark:border-gray-800 dark:bg-gray-950/20 dark:text-gray-300 dark:hover:bg-gray-900/60 dark:hover:text-white transition-all">
               <HugeiconsIcon icon={File02Icon}  className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-[#ADFA1D] transition-colors" />
               Resume
-            </button>
+            </button> */}
 
             <div className="hidden sm:block h-6 w-px bg-gray-200 dark:bg-gray-800/60 mx-2" />
 

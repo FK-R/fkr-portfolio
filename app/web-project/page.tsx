@@ -1,9 +1,11 @@
-import { Globe02Icon } from "@hugeicons/core-free-icons"
-import { ExternalLinkIcon } from "@hugeicons/core-free-icons"
-import { FileCodeIcon } from "@hugeicons/core-free-icons"
-import { DatabaseIcon } from "@hugeicons/core-free-icons"
-import { ServerStack01Icon } from "@hugeicons/core-free-icons"
-import { CheckmarkCircle03Icon } from "@hugeicons/core-free-icons"
+import {
+  CheckmarkCircle03Icon,
+  DatabaseIcon,
+  ExternalLinkIcon,
+  FileCodeIcon,
+  Globe02Icon,
+  ServerStack01Icon,
+} from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import Link from "next/link"
 
@@ -30,7 +32,7 @@ const webProjects: WebProject[] = [
     category: "Corporate Website",
     description:
       "Enterprise technology company website showcasing software development, cloud services, robotics, IoT solutions, and digital transformation offerings.",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js"],
+    technologies: ["Next.js", "React", "Tailwind CSS", "Node.js"],
     features: [
       "Corporate service showcase",
       "Responsive user interface",
@@ -63,13 +65,14 @@ const webProjects: WebProject[] = [
   {
     id: "books",
     title: "Books of Bengal",
-    category: "E-Commerce",
+    category: "Preorder E-Commerce",
     description:
       "Online bookstore platform providing a modern shopping experience with book discovery, ordering, and customer engagement features.",
     technologies: [
       "React",
+      "Next.js",
       "Node.js",
-      "MongoDB",
+      "PostgreSQL",
       "REST API",
       "Payment Integration",
     ],
@@ -90,7 +93,7 @@ const webProjects: WebProject[] = [
     category: "Corporate Website",
     description:
       "Corporate profile website presenting industrial operations, business activities, services, and company information.",
-    technologies: ["React", "JavaScript", "CMS Integration", "Responsive UI"],
+    technologies: ["HTML", "CSS", "JavaScript", "PHP"],
     features: [
       "Business profile presentation",
       "Corporate service showcase",
@@ -108,7 +111,7 @@ const webProjects: WebProject[] = [
     category: "Logistics Platform",
     description:
       "Maritime and logistics company website providing vessel management, freight forwarding, and shipping solutions.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "Node.js"],
+    technologies: ["Next.js", "React", "Tailwind CSS"],
     features: [
       "Shipping service presentation",
       "Inquiry management",
@@ -121,30 +124,12 @@ const webProjects: WebProject[] = [
   },
 
   {
-    id: "fastship",
-    title: "FastShip BD",
-    category: "Logistics Platform",
-    description:
-      "Digital logistics platform highlighting freight, shipping, and transportation services with a modern web experience.",
-    technologies: ["Next.js", "React", "Node.js", "Tailwind CSS"],
-    features: [
-      "Freight service showcase",
-      "Customer inquiry forms",
-      "Responsive interface",
-      "Business workflow presentation",
-      "SEO-ready structure",
-    ],
-    url: "https://www.fastshipbd.com",
-    status: "Live",
-  },
-
-  {
     id: "iiu-alumni",
     title: "IIUC EEE Alumni",
     category: "Organization Portal",
     description:
       "Community platform connecting alumni through membership services, events, announcements, and organizational activities.",
-    technologies: ["Next.js", "React", "MongoDB", "Node.js", "REST API"],
+    technologies: ["Next.js", "React", "MySQL", "Node.js", "REST API"],
     features: [
       "Member management",
       "Event management",
@@ -155,11 +140,26 @@ const webProjects: WebProject[] = [
     url: "https://www.iiuceeealumni.com",
     status: "Live",
   },
+  {
+    id: "electroxplore",
+    title: "ElectroXplore",
+    category: "Research Organization",
+    description:
+      "Research platform connecting new researchers through membership services, training,  and Engineering activities.",
+    technologies: ["Next.js", "React", "Google Sheets", "REST API"],
+    features: [
+      "Member management",
+      "Blog, News & announcements",
+      "Administrative dashboard",
+    ],
+    url: "https://www.electroxplore.com",
+    status: "Live",
+  },
 ]
 
 export default async function WebProjectsPage() {
   return (
-    <section className="w-full relative">
+    <section className="relative w-full">
       <div className="mb-14 border-b border-zinc-200 pb-6 dark:border-zinc-800">
         <div className="mb-3 flex items-center gap-3">
           <HugeiconsIcon
@@ -247,7 +247,7 @@ export default async function WebProjectsPage() {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm font-medium text-[#ADFA1D] hover:text-[#ADFA1D] dark:text-[#ADFA1D] dark:hover:text-[#ADFA1D] transition-colors"
+                  className="flex items-center gap-1.5 text-sm font-medium text-[#ADFA1D] transition-colors hover:text-[#ADFA1D] dark:text-[#ADFA1D] dark:hover:text-[#ADFA1D]"
                 >
                   Visit Site
                   <HugeiconsIcon icon={ExternalLinkIcon} className="h-4 w-4" />

@@ -98,22 +98,14 @@
 
 // export { ThemeProvider }
 
-"use client";
+"use client"
 
-import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+import * as React from "react"
 
-function ThemeProvider({ children }: React.PropsWithChildren) {
-  React.useEffect(() => {
-    const root = document.documentElement;
-
-    root.classList.add("dark");
-    root.classList.remove("light");
-    root.style.colorScheme = "dark";
-
-    localStorage.setItem("theme", "dark");
-  }, []);
-
-  return <>{children}</>;
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
-
-export { ThemeProvider };

@@ -12,12 +12,7 @@ import Link from "next/link"
 interface WebProject {
   id: string
   title: string
-  category:
-    | "Corporate Website"
-    | "Logistics Platform"
-    | "E-Commerce"
-    | "Organization Portal"
-
+  category: string
   description: string
   technologies: string[]
   features: string[]

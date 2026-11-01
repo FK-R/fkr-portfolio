@@ -18,6 +18,7 @@ export const metadata = {
     "Bridging the gap between physical hardware architectures and modern software ecosystems. I design robust IoT infrastructures and high-performance modular web layouts.",
 }
 
+// xxx
 export default function PortfolioHome() {
   return (
     <main className="relative overflow-hidden">
